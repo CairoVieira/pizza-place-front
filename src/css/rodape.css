@@ -1,0 +1,68 @@
+@media (max-width: 576px) {
+    .rodape-bottom-logo {
+        display: none;
+    }
+    .rodape-bottom-endereco {
+        width: 10rem !important;
+    }
+}
+
+.rodape-top {
+    height: 100px;
+    position: relative;
+    background: linear-gradient(177deg, var(--white) 50%, var(--yellow) 51%);
+}
+
+.rodape-bottom {
+    position: relative;
+    background-color: var(--yellow);
+    min-height: 15.625rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.rodape-bottom-both {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 2rem;
+}
+
+.rodape-bottom-logo {
+    margin: 0 2rem;
+}
+
+.rodape-bottom-logo-img {
+    width: 11rem;
+    height: 9rem;
+}
+
+.rodape-bottom-endereco {
+    width: 19.5rem;
+    line-height: 1;
+}
+
+.rodape-bottom-redes {
+    display: flex;
+    align-items: center;
+}
+
+.redes-sociais {
+    width: 3rem;
+    height: 3rem;
+    border-radius: 50%;
+    background-color: var(--black);
+    color: var(--white);
+    margin-right: 1rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.rodape-mapa {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 2rem;
+}

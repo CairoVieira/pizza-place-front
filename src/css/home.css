@@ -1,0 +1,460 @@
+@media (min-width: 1367px) {
+    .pizza {
+        height: 44.2rem;
+    }
+    .pizza-text {
+        width: 72rem;
+    }
+    .pizza-img {
+        width: 63rem;
+    }
+    .quem-somos-quem {
+        font-size: 11rem;
+        padding-left: 5rem;
+    }
+    .quem-somos-descricao {
+        font-size: 3.8rem;
+    }
+    .passo-passo-numero {
+        min-height: 15.625rem;
+    }
+    .passo-passo-numero {
+        min-height: 13rem;
+    }
+    .passo-passo-numero h1 {
+        font-size: 11.5rem;
+    }
+    .passo-passo-numero label {
+        font-size: 3rem;
+    }
+    .passo-passo-numero div {
+        width: 7.5rem;
+    }
+    .passo-passo-numero div span {
+        font-size: 1.8rem;
+    }
+    .passo-passo-numero p {
+        font-size: 7rem;
+    }
+    .cardapio h1 {
+        font-size: 10rem;
+    }
+    .cardapio-pizzas,
+    .cardapio-bebidas {
+        font-size: 5rem;
+    }
+    .cardapio-pizzas-nome {
+        font-size: 4rem;
+    }
+    .cardapio-pizzas-preco {
+        font-size: 3rem;
+    }
+    .cardapio-pizzas-descricao {
+        font-size: 1.9rem;
+    }
+    .cardapio-botao {
+        margin: 4rem;
+        font-size: 3.5rem;
+    }
+}
+
+@media (min-width: 769px) and (max-width: 1366px) {
+    .pizza {
+        height: 36rem;
+    }
+    .pizza-text {
+        width: 59rem;
+    }
+    .pizza-img {
+        width: 51rem;
+    }
+    .quem-somos-quem {
+        font-size: 7.9rem;
+        padding-left: 3rem;
+    }
+    .quem-somos-descricao {
+        font-size: 2.7rem;
+    }
+    .passo-passo-numero {
+        min-height: 12rem;
+    }
+    .passo-passo-numero h1 {
+        font-size: 10.25rem;
+    }
+    .passo-passo-numero label {
+        font-size: 2.6rem;
+    }
+    .passo-passo-numero div {
+        width: 6.5rem;
+    }
+    .passo-passo-numero div span {
+        font-size: 1.5rem;
+    }
+    .passo-passo-numero p {
+        font-size: 6.1rem;
+    }
+    .cardapio h1 {
+        font-size: 6.5rem;
+    }
+    .cardapio-pizzas,
+    .cardapio-bebidas {
+        font-size: 3.7rem;
+        margin-top: 3rem;
+    }
+    .cardapio-pizzas-nome {
+        font-size: 2.7rem;
+    }
+    .cardapio-pizzas-preco {
+        font-size: 1.8rem;
+    }
+    .cardapio-pizzas-descricao {
+        font-size: 1.4rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .pizza {
+        height: 24.55rem;
+    }
+    .pizza-text {
+        width: 40rem;
+    }
+    .pizza-img {
+        width: 34rem;
+    }
+    .quem-somos-quem {
+        font-size: 4rem;
+    }
+    .quem-somos-descricao {
+        font-size: 1.7rem;
+        text-align: center;
+    }
+    .passo-passo-numero {
+        min-height: 10rem;
+    }
+    .passo-passo-numero h1 {
+        font-size: 9rem;
+    }
+    .passo-passo-numero label {
+        font-size: 2.25rem;
+    }
+    .passo-passo-numero div {
+        width: 5.6rem;
+    }
+    .passo-passo-numero div span {
+        font-size: 1.35rem;
+    }
+    .passo-passo-numero p {
+        font-size: 5.8rem;
+    }
+    .cardapio h1 {
+        font-size: 4rem;
+    }
+    .cardapio-pizzas,
+    .cardapio-bebidas {
+        font-size: 3rem;
+        margin-top: 3rem;
+    }
+    .cardapio-pizzas-nome {
+        font-size: 2.5rem;
+    }
+    .cardapio-pizzas-preco {
+        font-size: 1.9rem;
+    }
+    .cardapio-pizzas-descricao {
+        font-size: 1.4rem;
+    }
+}
+
+@media (max-width: 576px) {
+    .pizza {
+        height: 16.5rem;
+    }
+    .pizza-text {
+        width: 27rem;
+    }
+    .pizza-img {
+        width: 23.5rem;
+    }
+    .quem-somos-quem {
+        font-size: 4rem;
+    }
+    .quem-somos-descricao {
+        font-size: 1.7rem;
+        text-align: center;
+    }
+    .passo-passo-numero {
+        min-height: 10rem;
+    }
+    .passo-passo-numero h1 {
+        font-size: 8rem;
+    }
+    .passo-passo-numero label {
+        font-size: 2rem;
+    }
+    .passo-passo-numero div {
+        width: 5rem;
+    }
+    .passo-passo-numero div span {
+        font-size: 1.2rem;
+    }
+    .passo-passo-numero p {
+        font-size: 5.5rem;
+    }
+    .cardapio h1 {
+        font-size: 4rem;
+    }
+    .cardapio-pizzas,
+    .cardapio-bebidas {
+        font-size: 2.75rem;
+        margin-top: 3rem;
+        padding: 0.5rem 3rem !important;
+    }
+    .cardapio-pizza {
+        padding: 0.5rem 3rem !important;
+    }
+    .cardapio-pizzas-nome {
+        font-size: 2.2rem;
+    }
+    .cardapio-pizzas-preco {
+        font-size: 1.8rem;
+    }
+    .cardapio-pizzas-descricao {
+        font-size: 1.3rem;
+    }
+}
+
+@media (max-width: 374px) {
+    .pizza {
+        height: 12.3rem;
+    }
+    .pizza-text {
+        width: 20rem;
+    }
+    .pizza-img {
+        width: 16.5rem;
+    }
+    .quem-somos {
+        min-height: 14.5rem !important;
+    }
+    .quem-somos-quem {
+        font-size: 3rem;
+    }
+    .quem-somos-descricao {
+        font-size: 1.3rem;
+        text-align: center;
+    }
+    .passo-passo-numero {
+        min-height: 9rem;
+    }
+    .passo-passo-numero h1 {
+        font-size: 7rem;
+    }
+    .passo-passo-numero label {
+        font-size: 1.75rem;
+    }
+    .passo-passo-numero div {
+        width: 4.75rem;
+    }
+    .passo-passo-numero div span {
+        font-size: 1rem;
+    }
+    .passo-passo-numero p {
+        font-size: 4rem;
+    }
+    .cardapio h1 {
+        font-size: 3rem;
+    }
+    .cardapio-pizzas,
+    .cardapio-bebidas {
+        font-size: 2rem;
+        margin-top: 2.2rem;
+        padding: 0.5rem 2rem !important;
+    }
+
+    .cardapio-pizza {
+        padding: 0.5rem 2rem !important;
+    }
+    .cardapio-pizzas-nome {
+        font-size: 1.7rem;
+    }
+    .cardapio-pizzas-preco {
+        font-size: 1.4rem;
+    }
+    .cardapio-pizzas-descricao {
+        font-size: 1.1rem;
+    }
+}
+
+.pizza {
+    position: relative;
+    background-color: var(--yellow);
+}
+
+.pizza-img-div {
+    position: relative;
+    width: 100%;
+}
+
+.pizza-text {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, 12%);
+}
+
+.pizza-img {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-52%, 13%);
+
+    /* animation-name: spin;
+    animation-duration: 15000ms;
+    animation-iteration-count: infinite;
+    animation-timing-function: linear; */
+}
+
+.quem-somos {
+    min-height: 18.5rem;
+    padding-top: 3rem;
+    position: relative;
+    background-color: var(--white);
+}
+
+.quem-somos-quem {
+    line-height: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.quem-somos-descricao {
+    line-height: 1.3;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.passo-passo-background {
+    height: 100px;
+    position: relative;
+    background: linear-gradient(177deg, var(--white) 50%, var(--yellow) 51%);
+}
+
+.passo-passo {
+    position: relative;
+    background-color: var(--yellow);
+    min-height: 15.625rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.passo-passo-numero {
+    position: relative;
+}
+
+.passo-passo-numero h1 {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-165%, -50%);
+}
+
+.passo-passo-numero label {
+    color: var(--white);
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-55%, -115%);
+}
+
+.passo-passo-numero div {
+    top: 50%;
+    left: 50%;
+    position: absolute;
+    transform: translate(-50%, -20%);
+    line-height: 1;
+}
+
+.passo-passo-numero p {
+    top: 50%;
+    left: 50%;
+    transform: translate(260%, -58%);
+    position: absolute;
+}
+
+.n1 label {
+    transform: translate(-82%, -115%);
+}
+
+.n2 label {
+    transform: translate(-70%, -115%);
+}
+
+.n2 div {
+    transform: translate(-40%, -20%);
+}
+
+.n3 label {
+    transform: translate(-50%, -115%);
+}
+
+.n3 div {
+    transform: translate(-40%, -20%);
+}
+
+.n4 label {
+    transform: translate(-50%, -115%);
+}
+
+.n4 div {
+    transform: translate(-38%, -20%);
+}
+
+.cardapio {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+}
+
+.cardapio-pizzas,
+.cardapio-pizza,
+.cardapio-bebidas {
+    display: block;
+    padding: 0.5rem 8rem;
+    line-height: 1;
+}
+
+.cardapio-pizzas label,
+.cardapio-bebidas label {
+    border-bottom: 2px solid var(--text-color);
+}
+
+.cardapio-pizzas-descricao {
+    margin-top: -1.5rem;
+}
+
+.cardapio-botoes {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.cardapio-botao {
+    border: 2px solid var(--black);
+    padding: 0.6rem 1.5rem !important;
+    background-color: var(--white);
+    box-shadow: 0px 2px 5px 0px var(--text-color);
+    margin: 0 1rem;
+}
+
+@keyframes spin {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
+}
