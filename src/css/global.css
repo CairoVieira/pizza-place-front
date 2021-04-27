@@ -1,43 +1,45 @@
 @import url("https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap");
 
 :root {
-    --text-color: #000;
-    --yellow: #fdc535;
-    --white: #fff;
-    --black: #000;
+	--text-color: #000;
+	--yellow: #fdc535;
+	--white: #fff;
+	--black: #000;
+	--text-options: #333;
+	--gray: #888;
 }
 
 body {
-    font-family: "Bebas Neue", sans-serif;
-    color: var(--text-color);
+	font-family: "Bebas Neue", sans-serif;
+	color: var(--text-color);
 }
 
 @media (min-width: 1367px) {
-    html {
-        font-size: 94.75%;
-    }
+	html {
+		font-size: 94.75%;
+	}
 
-    body {
-        font-size: 2rem;
-    }
+	body {
+		font-size: 2rem;
+	}
 }
 
 @media (min-width: 769px) and (max-width: 1366px) {
-    html {
-        font-size: 89.5%;
-    }
+	html {
+		font-size: 89.5%;
+	}
 
-    body {
-        font-size: 1.5rem;
-    }
+	body {
+		font-size: 1.5rem;
+	}
 }
 
 @media (max-width: 768px) {
-    html {
-        font-size: 85.5%;
-    }
+	html {
+		font-size: 85.5%;
+	}
 
-    body {
-        font-size: 1.1rem;
-    }
+	body {
+		font-size: 1.1rem;
+	}
 }
