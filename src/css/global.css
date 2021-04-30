@@ -8,6 +8,9 @@
 	--text-options: #333;
 	--gray: #888;
 }
+html {
+	scroll-behavior: smooth;
+}
 
 body {
 	font-family: "Bebas Neue", sans-serif;

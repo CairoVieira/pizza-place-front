@@ -1,61 +1,68 @@
 .bg-menu {
-    background: rgb(246, 181, 51);
-    background: linear-gradient(
-        180deg,
-        rgba(246, 181, 51, 1) 35%,
-        rgba(253, 196, 53, 1) 100%
-    );
+	background: rgb(246, 181, 51);
+	background: linear-gradient(
+		180deg,
+		rgba(246, 181, 51, 1) 35%,
+		rgba(253, 196, 53, 1) 100%
+	);
 }
 ul {
-    width: 100%;
+	width: 100%;
 }
 
 ul li {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 14.28%;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	width: 14.28%;
 }
 
 ul li a {
-    color: var(--text-color) !important;
+	color: var(--text-color) !important;
 }
 
 .btn-login {
-    border: 1px solid var(--black);
-    padding: 0.6rem 1.5rem !important;
+	border: 1px solid var(--black);
+	padding: 0.6rem 1.5rem !important;
+}
+
+a.anchor {
+	display: block;
+	position: relative;
+	top: -180px;
+	visibility: hidden;
 }
 
 @media (min-width: 1367px) {
-    .logo-img {
-        width: 8.75rem;
-        height: 7.25rem;
-    }
+	.logo-img {
+		width: 8.75rem;
+		height: 7.25rem;
+	}
 }
 
 @media (min-width: 769px) and (max-width: 1366px) {
-    .logo-img {
-        width: 7.75rem;
-        height: 6.25rem;
-    }
+	.logo-img {
+		width: 7.75rem;
+		height: 6.25rem;
+	}
 }
 
 @media (max-width: 768px) {
-    .logo-img {
-        width: 5.75rem;
-        height: 4.5rem;
-    }
+	.logo-img {
+		width: 5.75rem;
+		height: 4.5rem;
+	}
 }
 
 @media (max-width: 575px) {
-    .logo-img {
-        display: none;
-    }
+	.logo-img {
+		display: none;
+	}
 
-    ul li {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        width: 100%;
-    }
+	ul li {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		width: 100%;
+	}
 }

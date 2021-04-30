@@ -4,15 +4,16 @@ import { loginScripts } from "../../js/scripts";
 import { useEffect } from "react";
 
 const Login = () => {
-    useEffect(() => {
-        loginScripts();
-    }, []);
-    return (
-        <>
-            <Menu />
-            <FormularioLogin />
-        </>
-    );
+	useEffect(() => {
+		loginScripts();
+	}, []);
+
+	return (
+		<>
+			<Menu />
+			<FormularioLogin />
+		</>
+	);
 };
 
 export { Login };

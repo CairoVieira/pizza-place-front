@@ -15,7 +15,12 @@ const FazerPedido = () => {
 			<Menu />
 			<Pizza />
 			<FazerBusca />
-			<Cardapio enableFavorito={true} enableTituloCardapio={false} />
+			<Cardapio
+				enableFavorito={true}
+				enableTituloCardapio={false}
+				listaPizzas={[]}
+				listaBebidas={[]}
+			/>
 			<Rodape />
 			<CriarPizza />
 		</>

@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { Menu } from "../../components/menu";
 import { Rodape } from "../../components/rodape";
 import "../../css/home.css";
@@ -7,15 +7,23 @@ import { PassoPasso } from "./passo-passo";
 import { Pizza } from "../../components/pizza";
 import { QuemSomos } from "./quem-somos";
 import * as action from "./actions";
+import { IPizzas } from "../../interfaces/IPizzas";
+import { IBebidas } from "../../interfaces/IBebidas";
 
-// const DEFAULT_STATE = {
-//     listaPizzas: Array,
-// };
 const Home = () => {
-	// const [];
+	const [listaPizzas, setListaPizzas] = useState<IPizzas[]>([]);
+	const [listaBebidas, setListaBebidas] = useState<Array<IBebidas[]>>([]);
+
 	useEffect(() => {
-		action.getCardapio();
+		init();
 	}, []);
+
+	const init = async () => {
+		const pizzas = await action.getPizzas();
+		const bebidas = await action.getBebidasGrupo();
+		setListaPizzas(pizzas);
+		setListaBebidas(bebidas);
+	};
 
 	return (
 		<>
@@ -23,7 +31,12 @@ const Home = () => {
 			<Pizza />
 			<QuemSomos />
 			<PassoPasso />
-			<Cardapio enableFavorito={false} enableTituloCardapio={true} />
+			<Cardapio
+				listaPizzas={listaPizzas}
+				listaBebidas={listaBebidas}
+				enableFavorito={false}
+				enableTituloCardapio={true}
+			/>
 			<Rodape />
 		</>
 	);
