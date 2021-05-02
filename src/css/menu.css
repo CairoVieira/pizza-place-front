@@ -24,6 +24,7 @@ ul li a {
 .btn-login {
 	border: 1px solid var(--black);
 	padding: 0.6rem 1.5rem !important;
+	background-color: transparent;
 }
 
 a.anchor {
