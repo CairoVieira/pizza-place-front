@@ -1,9 +1,8 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import "../../css/login.css";
-import { login } from "./actions";
 
-const FormularioLogin = () => {
+const FormularioLogin = (props: any) => {
 	const [emailLogin, setEmailLogin] = useState("");
 	const [senhaLogin, setSenhaLogin] = useState("");
 
@@ -22,7 +21,7 @@ const FormularioLogin = () => {
 
 	const handleLogin = (e: any) => {
 		e.preventDefault();
-		login(emailLogin, senhaLogin);
+		props.login(emailLogin, senhaLogin);
 	};
 
 	return (

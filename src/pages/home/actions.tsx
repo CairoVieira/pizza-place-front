@@ -1,38 +1,49 @@
 import axios from "axios";
 import Swal from "sweetalert2";
+import { LISTA_BEBIDAS_GRUPO, LISTA_PIZZAS } from "../../app/reducersTypes";
 
 const API_URL = process.env.PROD ? "" : "http://localhost:5000";
 
 const getPizzas = () => {
-	return axios
-		.get(`${API_URL}/pizzas`)
-		.then((response) => response.data)
-		.catch((err) => {
-			if (err.response && err.response.status === 500)
-				Swal.fire("Atenção", `${err.response.data.error}`, "error");
-			else
-				Swal.fire(
-					"Atenção",
-					"Ocorreu um erro ao buscar pizzas",
-					"error"
-				);
-		});
+	return (dispatch: any) => {
+		axios
+			.get(`${API_URL}/pizzas`)
+			.then((response) => {
+				const payload = response.data;
+				dispatch({ type: LISTA_PIZZAS, payload });
+			})
+			.catch((err) => {
+				if (err.response && err.response.status === 500)
+					Swal.fire("Atenção", `${err.response.data.error}`, "error");
+				else
+					Swal.fire(
+						"Atenção",
+						"Ocorreu um erro ao buscar pizzas",
+						"error"
+					);
+			});
+	};
 };
 
 const getBebidasGrupo = () => {
-	return axios
-		.get(`${API_URL}/bebidas/grupo`)
-		.then((response) => response.data)
-		.catch((err) => {
-			if (err.response && err.response.status === 500)
-				Swal.fire("Atenção", `${err.response.data.error}`, "error");
-			else
-				Swal.fire(
-					"Atenção",
-					"Ocorreu um erro ao buscar bebidas",
-					"error"
-				);
-		});
+	return (dispatch: any) => {
+		return axios
+			.get(`${API_URL}/bebidas/grupo`)
+			.then((response) => {
+				const payload = response.data;
+				dispatch({ type: LISTA_BEBIDAS_GRUPO, payload });
+			})
+			.catch((err) => {
+				if (err.response && err.response.status === 500)
+					Swal.fire("Atenção", `${err.response.data.error}`, "error");
+				else
+					Swal.fire(
+						"Atenção",
+						"Ocorreu um erro ao buscar bebidas",
+						"error"
+					);
+			});
+	};
 };
 
 export { getPizzas, getBebidasGrupo };

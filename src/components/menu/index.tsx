@@ -1,14 +1,10 @@
 import { Link } from "react-router-dom";
 import "../../css/menu.css";
 import logo from "../../images/PizzaPlaceLogo.png";
-import { IUsuario } from "../../interfaces/IUsuario";
 
-interface IProps {
-	usuario?: IUsuario;
-}
-
-const Menu = (props: IProps) => {
-	const { usuario } = props;
+const Menu = (props: any) => {
+	console.log("PROPS==", props);
+	const { usuario } = props.store;
 	return (
 		<nav className="navbar navbar-expand-lg navbar-expand-sm bg-menu">
 			<button
@@ -60,17 +56,17 @@ const Menu = (props: IProps) => {
 							Contato
 						</a>
 					</li>
-					{!usuario && (
+					{!usuario.usuario.nome && (
 						<li className="nav-item ">
 							<Link className="nav-link btn-login" to="/login">
 								Login
 							</Link>
 						</li>
 					)}
-					{usuario && (
+					{usuario.usuario.nome && (
 						<li className="nav-item ">
 							<button className="nav-link btn-login">
-								{usuario.nome.split(" ")[0]}
+								{usuario.usuario.nome.split(" ")[0]}
 							</button>
 						</li>
 					)}

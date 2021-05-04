@@ -17,5 +17,5 @@ export function usuarioAutenticado() {
 
 	if (!usuario) return false;
 
-	return JSON.parse(usuario);
+	return true;
 }

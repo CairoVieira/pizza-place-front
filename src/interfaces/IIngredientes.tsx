@@ -1,11 +1,10 @@
-interface IBebidas {
+interface IIngredientes {
 	id: string;
 	nome: string;
 	valor: number;
-	qtd: number;
 	categoria: string;
 	created_at: Date;
 	updated_at: Date;
 }
 
-export type { IBebidas };
+export type { IIngredientes };

@@ -1,15 +1,9 @@
+import { Link } from "react-router-dom";
 import { IBebidas } from "../../interfaces/IBebidas";
 import { IPizzas } from "../../interfaces/IPizzas";
 
-interface IProps {
-	enableFavorito: boolean;
-	enableTituloCardapio: boolean;
-	listaPizzas: Array<IPizzas>;
-	listaBebidas: Array<Array<IBebidas>>;
-}
-
-const Cardapio = (props: IProps) => {
-	const { listaPizzas, listaBebidas } = props;
+const Cardapio = (props: any) => {
+	const { listaPizzasFiltro, listaBebidasGrupoFiltro } = props.store.pizzaria;
 
 	const setDescricaoCardapio = (pizza: IPizzas) => {
 		let descricao = pizza.itens_pizza.find(
@@ -33,23 +27,51 @@ const Cardapio = (props: IProps) => {
 	};
 
 	const setBebidas = () => {
-		return listaBebidas.map((bebida, index) => (
-			<div className="row mt-2" key={index}>
-				<div className="cardapio-pizza">
-					<label className="cardapio-pizzas-nome mr-3">
-						{bebida[0].categoria}
-					</label>
-					<span className="cardapio-pizzas-preco">
-						R$ {bebida[0].valor}
-					</span>
+		return listaBebidasGrupoFiltro.map(
+			(bebida: IBebidas[], index: number) => (
+				<div
+					className={
+						props.habilitarPedido
+							? "row mt-2 ml-1 mr-1 cardapio-bebidas-row btn-pedido-border btn-pedido"
+							: "row mt-2 ml-1 mr-1 cardapio-bebidas-row"
+					}
+					// onClick={() => {
+					// 	return props.handlePedirBebida
+					// 		? props.handlePedirBebida(bebida[0].categoria)
+					// 		: undefined;
+					// }}
+					data-toggle={props.habilitarPedido ? "modal" : ""}
+					data-target={props.habilitarPedido ? "#modalBebida" : ""}
+					key={index}
+				>
+					<div className="cardapio-pizza">
+						<label
+							className={
+								props.habilitarPedido
+									? "cardapio-pizzas-nome mr-3 btn-pedido"
+									: "cardapio-pizzas-nome mr-3"
+							}
+						>
+							{bebida[0].categoria}
+						</label>
+						<span className="cardapio-pizzas-preco">
+							R$ {bebida[0].valor}
+						</span>
+					</div>
+					<div className="cardapio-pizza">
+						<label
+							className={
+								props.habilitarPedido
+									? "cardapio-pizzas-descricao btn-pedido"
+									: "cardapio-pizzas-descricao"
+							}
+						>
+							{setDescricaoBebidas(bebida)}
+						</label>
+					</div>
 				</div>
-				<div className="cardapio-pizza">
-					<label className="cardapio-pizzas-descricao">
-						{setDescricaoBebidas(bebida)}
-					</label>
-				</div>
-			</div>
-		));
+			)
+		);
 	};
 
 	const setDescricaoBebidas = (bebidas: Array<IBebidas>) => {
@@ -64,44 +86,71 @@ const Cardapio = (props: IProps) => {
 
 	return (
 		<div id="cardapio" className="container-fluid mt-4">
-			{props.enableTituloCardapio && (
-				<div className="row cardapio mr-5">
+			{!props.habilitarPedido && (
+				<div className="row cardapio mr-5 mt-4">
 					<h1>Cardápio</h1>
 				</div>
 			)}
 			<div className="row">
 				<div className="col-sm-12 col-md-6 col-lg-6 ">
-					<div className="row cardapio-pizzas mb-4">
+					<div className="row cardapio-pizzas mb-4 ml-1">
 						<label>Pizzas</label>
 					</div>
-					{listaPizzas.length > 0 &&
-						listaPizzas.map((pizza) => (
-							<div className="row mt-2" key={pizza.id}>
-								<div className="cardapio-pizza">
-									<label className="cardapio-pizzas-nome mr-3">
-										{pizza.nome}
-									</label>
-									<span className="cardapio-pizzas-preco">
-										R$ {pizza.valor}
-									</span>
-								</div>
-								<div className="cardapio-pizza">
-									<label className="cardapio-pizzas-descricao">
-										{setDescricaoCardapio(pizza)}
-									</label>
+					{listaPizzasFiltro.length > 0 &&
+						listaPizzasFiltro.map((pizza: IPizzas) => (
+							<div
+								className={
+									props.habilitarPedido
+										? "row mt-2 ml-1 mr-1 cardapio-pizzas-row btn-pedido-border btn-pedido"
+										: "row mt-2 ml-1 mr-1 cardapio-pizzas-row"
+								}
+								key={pizza.id}
+							>
+								<div
+									className={
+										props.habilitarPedido
+											? "btn-pedido"
+											: ""
+									}
+								>
+									<div className="cardapio-pizza">
+										<label
+											className={
+												props.habilitarPedido
+													? "cardapio-pizzas-nome mr-3 btn-pedido"
+													: "cardapio-pizzas-nome mr-3"
+											}
+										>
+											{pizza.nome}
+										</label>
+										<span className="cardapio-pizzas-preco">
+											R$ {pizza.valor}
+										</span>
+									</div>
+									<div className="cardapio-pizza">
+										<label
+											className={
+												props.habilitarPedido
+													? "cardapio-pizzas-descricao btn-pedido"
+													: "cardapio-pizzas-descricao"
+											}
+										>
+											{setDescricaoCardapio(pizza)}
+										</label>
+									</div>
 								</div>
 							</div>
 						))}
 				</div>
 				<div className="col-sm-12 col-md-6 col-lg-6">
-					<div className="row cardapio-bebidas mb-4">
+					<div className="row cardapio-bebidas mb-4 ml-1">
 						<label>Bebidas</label>
 					</div>
 					{setBebidas()}
 				</div>
 			</div>
 			<div className="row mt-2 cardapio-botoes">
-				{props.enableFavorito && (
+				{props.habilitarPedido && (
 					<button className="cardapio-botao">Favoritos</button>
 				)}
 				<button
@@ -111,7 +160,14 @@ const Cardapio = (props: IProps) => {
 				>
 					criar meu sabor
 				</button>
-				<button className="cardapio-botao">fazer meu pedido</button>
+				{props.habilitarPedido && (
+					<button className="cardapio-botao">fazer meu pedido</button>
+				)}
+				{!props.habilitarPedido && (
+					<Link className="cardapio-botao" to="/fazer-pedido">
+						fazer meu pedido
+					</Link>
+				)}
 			</div>
 		</div>
 	);

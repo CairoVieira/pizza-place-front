@@ -1,96 +1,39 @@
 import criarPizza from "../../images/criar-pizza.jpg";
 import "../../css/criar-pizza.css";
 import { useState } from "react";
-
-interface IProps {}
+import { IIngredientes } from "../../interfaces/IIngredientes";
 
 interface IState {
 	qtdPizza: number;
 }
 
-const INITIAL_SATATE: IState = {
+const INITIAL_STATE: IState = {
 	qtdPizza: 1,
 };
 
-const CriarPizza = (props: IProps) => {
-	const [qtdPizza, setQtdPizza] = useState(INITIAL_SATATE.qtdPizza);
+const ModalCriarPizza = (props: any) => {
+	const [qtdPizza, setQtdPizza] = useState(INITIAL_STATE.qtdPizza);
 
-	const arrayMassa = [
-		{
-			id: "1",
-			nome: "tradicional",
-		},
-		{
-			id: "2",
-			nome: "crocante",
-		},
-		{
-			id: "3",
-			nome: "integral",
-		},
-	];
+	let arrayMassa: Array<IIngredientes> = [];
+	let arrayMolho: Array<IIngredientes> = [];
+	let arrayToppings: Array<IIngredientes> = [];
 
-	const arrayMolho = [
-		{
-			id: "1",
-			nome: "tomate",
-		},
-		{
-			id: "2",
-			nome: "branco com limão e vinho branco",
-		},
-	];
-
-	const arrayToppings = [
-		{
-			id: "1",
-			nome: "alho",
-		},
-		{
-			id: "2",
-			nome: "alho frito",
-		},
-		{
-			id: "3",
-			nome: "azeite de trufas",
-		},
-		{
-			id: "4",
-			nome: "azeitona preta",
-		},
-		{
-			id: "5",
-			nome: "bacon",
-		},
-		{
-			id: "6",
-			nome: "cebola roxa",
-		},
-		{
-			id: "7",
-			nome: "cream cheese",
-		},
-		{
-			id: "8",
-			nome: "gorgonzola",
-		},
-		{
-			id: "9",
-			nome: "linguiça",
-		},
-		{
-			id: "10",
-			nome: "manjericão",
-		},
-		{
-			id: "11",
-			nome: "mozzarela",
-		},
-		{
-			id: "12",
-			nome: "pepperoni",
-		},
-	];
+	const init = () => {
+		if (props.store.ingredientes) {
+			arrayMassa = props.store.ingredientes.filter(
+				(ingrediente: IIngredientes) =>
+					ingrediente.categoria === "MASSA"
+			);
+			arrayMolho = props.ingredientes.filter(
+				(ingrediente: IIngredientes) =>
+					ingrediente.categoria === "MOLHOS"
+			);
+			arrayToppings = props.ingredientes.filter(
+				(ingrediente: IIngredientes) =>
+					ingrediente.categoria === "TOPPINGS"
+			);
+		}
+	};
 
 	const handleQtdMenos = () => {
 		if (qtdPizza > 0) setQtdPizza(qtdPizza - 1);
@@ -99,6 +42,9 @@ const CriarPizza = (props: IProps) => {
 	const handleQtdMais = () => {
 		if (qtdPizza < 10) setQtdPizza(qtdPizza + 1);
 	};
+
+	init();
+
 	return (
 		<div
 			className="modal fade"
@@ -252,4 +198,4 @@ const CriarPizza = (props: IProps) => {
 	);
 };
 
-export { CriarPizza };
+export { ModalCriarPizza };

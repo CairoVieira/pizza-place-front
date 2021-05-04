@@ -1,49 +1,53 @@
-import React, { useEffect, useState } from "react";
+import React, { Component } from "react";
+import { connect } from "react-redux";
+import { bindActionCreators } from "redux";
+import { Cardapio } from "../../components/cardapio";
 import { Menu } from "../../components/menu";
+import { Pizza } from "../../components/pizza";
 import { Rodape } from "../../components/rodape";
 import "../../css/home.css";
-import { Cardapio } from "../../components/cardapio";
-import { PassoPasso } from "./passo-passo";
-import { Pizza } from "../../components/pizza";
-import { QuemSomos } from "./quem-somos";
+import { IUsuario } from "../../interfaces/IUsuario";
 import * as action from "./actions";
-import { IPizzas } from "../../interfaces/IPizzas";
-import { IBebidas } from "../../interfaces/IBebidas";
-import { usuarioAutenticado } from "../../js/scripts";
+import { PassoPasso } from "./passo-passo";
+import { QuemSomos } from "./quem-somos";
 
-const Home = () => {
-	const [listaPizzas, setListaPizzas] = useState<IPizzas[]>([]);
-	const [listaBebidas, setListaBebidas] = useState<Array<IBebidas[]>>([]);
-	const [usuario, setUsuario] = useState();
-
-	useEffect(() => {
-		init();
-	}, []);
-
-	const init = async () => {
-		const user = usuarioAutenticado();
-		setUsuario(user);
-		const pizzas = await action.getPizzas();
-		const bebidas = await action.getBebidasGrupo();
-		if (pizzas) setListaPizzas(pizzas);
-		if (bebidas) setListaBebidas(bebidas);
+interface IProps {
+	getPizzas: Function;
+	getBebidasGrupo: Function;
+	store: {
+		pizzaria: any;
+		usuario: IUsuario;
 	};
+}
 
-	return (
-		<>
-			<Menu usuario={usuario} />
-			<Pizza />
-			<QuemSomos />
-			<PassoPasso />
-			<Cardapio
-				listaPizzas={listaPizzas}
-				listaBebidas={listaBebidas}
-				enableFavorito={false}
-				enableTituloCardapio={true}
-			/>
-			<Rodape />
-		</>
-	);
+interface IState {}
+class Home extends Component<IProps, IState> {
+	componentDidMount() {
+		const { getPizzas, getBebidasGrupo } = this.props;
+		getPizzas();
+		getBebidasGrupo();
+	}
+
+	render() {
+		return (
+			<>
+				<Menu {...this.props} />
+				<Pizza />
+				<QuemSomos />
+				<PassoPasso />
+				<Cardapio {...this.props} habilitarPedido={false} />
+				<Rodape />
+			</>
+		);
+	}
+}
+
+const mapStateToProps = (state: any) => {
+	return { store: state };
 };
 
-export { Home };
+const mapDispatchToProps = (dispatch: any) => {
+	return bindActionCreators(action, dispatch);
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(Home);
