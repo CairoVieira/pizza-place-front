@@ -3,7 +3,6 @@ import "../../css/menu.css";
 import logo from "../../images/PizzaPlaceLogo.png";
 
 const Menu = (props: any) => {
-	console.log("PROPS==", props);
 	const { usuario } = props.store;
 	return (
 		<nav className="navbar navbar-expand-lg navbar-expand-sm bg-menu">

@@ -35,11 +35,11 @@ const Cardapio = (props: any) => {
 							? "row mt-2 ml-1 mr-1 cardapio-bebidas-row btn-pedido-border btn-pedido"
 							: "row mt-2 ml-1 mr-1 cardapio-bebidas-row"
 					}
-					// onClick={() => {
-					// 	return props.handlePedirBebida
-					// 		? props.handlePedirBebida(bebida[0].categoria)
-					// 		: undefined;
-					// }}
+					onClick={() =>
+						props.setBebidaSelecionada
+							? props.setBebidaSelecionada(bebida)
+							: ""
+					}
 					data-toggle={props.habilitarPedido ? "modal" : ""}
 					data-target={props.habilitarPedido ? "#modalBebida" : ""}
 					key={index}
@@ -105,6 +105,17 @@ const Cardapio = (props: any) => {
 										: "row mt-2 ml-1 mr-1 cardapio-pizzas-row"
 								}
 								key={pizza.id}
+								data-toggle={
+									props.habilitarPedido ? "modal" : ""
+								}
+								data-target={
+									props.habilitarPedido ? "#ModalPizzas" : ""
+								}
+								onClick={() =>
+									props.setPizzaSelecionada
+										? props.setPizzaSelecionada(pizza)
+										: ""
+								}
 							>
 								<div
 									className={

@@ -26,6 +26,9 @@
 		left: -0.25rem;
 		font-size: 2rem;
 	}
+	.btn-qtd-bebida {
+		width: 7.25rem !important;
+	}
 }
 
 @media (min-width: 769px) and (max-width: 1366px) {
@@ -124,19 +127,19 @@
 	width: 100%;
 }
 
-.btn-qtd {
+.btn-qtd-bebida {
 	border: 2px solid var(--black);
 	width: 6.5rem;
 	min-height: 0.75rem;
 }
-.btn-qtd button {
+.btn-qtd-bebida button {
 	border: none;
 	background-color: var(--white);
 	padding: 0rem 1rem;
 	min-height: 0.75rem;
 }
 
-.btn-qtd label {
+.btn-qtd-bebida label {
 	color: var(--yellow);
 	margin-bottom: 0;
 }

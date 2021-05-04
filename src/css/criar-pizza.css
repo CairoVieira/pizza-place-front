@@ -223,7 +223,7 @@ input[type="radio"]:checked:after {
 .btn-qtd button {
 	border: none;
 	background-color: var(--white);
-	padding: 0.15rem 1.5rem;
+	padding: 0.15rem 1rem;
 	min-height: 3rem;
 }
 
@@ -258,4 +258,20 @@ input[type="radio"]:checked:after {
 
 .modal-body {
 	padding-top: 0;
+}
+
+.pizza-serve {
+	font-size: 1.8rem;
+}
+
+.pizza-valor {
+	font-size: 2.5rem;
+	color: seagreen;
+}
+
+.text-comentario {
+	width: 100%;
+	height: 6rem;
+	border: 2px solid var(--black);
+	padding: 0.5rem;
 }

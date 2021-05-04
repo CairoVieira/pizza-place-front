@@ -1,23 +1,36 @@
-import { useEffect, useState } from "react";
 import "../../css/modal-bebida.css";
 import criarPizza from "../../images/criar-pizza.jpg";
 import { IBebidas } from "../../interfaces/IBebidas";
 
 const ModalBebida = (props: any) => {
-	const { listaBebidasGrupoFiltro } = props.store.pizzaria;
+	const { bebidaSelecionada } = props.store.pizzaria;
 
 	const handleQtdMenos = (bebida: IBebidas) => {
-		// listaBebidas.forEach((b: IBebidas) => {
-		// 	if (b.id === bebida.id) if (bebida.qtd > 0) bebida.qtd -= 1;
-		// });
-		// setListaBebidas([...listaBebidas]);
+		if (bebida.qtd > 0) {
+			let novaBebida = bebida;
+			novaBebida.qtd = novaBebida.qtd - 1;
+
+			const index = bebidaSelecionada.indexOf(bebida);
+			let novaBebidasSelecionadas = bebidaSelecionada.filter(
+				(x: IBebidas) => x.id !== bebida.id
+			);
+			novaBebidasSelecionadas.splice(index, 0, novaBebida);
+			props.setBebidaSelecionada(novaBebidasSelecionadas);
+		}
 	};
 
 	const handleQtdMais = (bebida: IBebidas) => {
-		// listaBebidas.forEach((b: IBebidas) => {
-		// 	if (b.id === bebida.id) if (bebida.qtd < 10) bebida.qtd += 1;
-		// });
-		// setListaBebidas([...listaBebidas]);
+		if (bebida.qtd < 10) {
+			let novaBebida = bebida;
+			novaBebida.qtd = novaBebida.qtd + 1;
+
+			const index = bebidaSelecionada.indexOf(bebida);
+			let novaBebidasSelecionadas = bebidaSelecionada.filter(
+				(x: IBebidas) => x.id !== bebida.id
+			);
+			novaBebidasSelecionadas.splice(index, 0, novaBebida);
+			props.setBebidaSelecionada(novaBebidasSelecionadas);
+		}
 	};
 
 	return (
@@ -53,14 +66,12 @@ const ModalBebida = (props: any) => {
 								<div className="col-sm-12 col-md-6 col-lg-6">
 									<div className="row mt-3 mb-3">
 										<h2 className="criar-pizza-titulo">
-											{
-												listaBebidasGrupoFiltro[0]
-													.categoria
-											}
+											{bebidaSelecionada.length > 0 &&
+												bebidaSelecionada[0].categoria}
 										</h2>
 									</div>
 
-									{listaBebidasGrupoFiltro.map(
+									{bebidaSelecionada.map(
 										(bebida: IBebidas) => (
 											<div
 												className="row"
@@ -72,7 +83,7 @@ const ModalBebida = (props: any) => {
 													</label>
 												</div>
 												<div className="col-sm-3 col-md-3 col-lg-3">
-													<div className="btn-qtd">
+													<div className="btn-qtd-bebida">
 														<button
 															onClick={() =>
 																handleQtdMenos(
@@ -99,6 +110,21 @@ const ModalBebida = (props: any) => {
 											</div>
 										)
 									)}
+									<div className="row mt-3">
+										<div className="col-sm-9 col-md-9 col-lg-9">
+											<label className="pizza-serve">
+												<i className="fas fa-user mr-1"></i>
+												<strong>serve 1 pessoa</strong>
+											</label>
+										</div>
+										<div className="col-sm-3 col-md-3 col-lg-3 text-left">
+											<label className="pizza-valor">
+												R${" "}
+												{bebidaSelecionada.length > 0 &&
+													bebidaSelecionada[0].valor}
+											</label>
+										</div>
+									</div>
 									<div className="row mt-3 pt-1 pb-1 criar-pizza-botoes">
 										<button className="btn-criar-pizza btn-add-pizza">
 											Adicionar

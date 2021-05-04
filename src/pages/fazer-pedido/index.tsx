@@ -1,22 +1,20 @@
-import React, { Component, useEffect, useState } from "react";
+import React, { Component } from "react";
+import { connect } from "react-redux";
+import { bindActionCreators } from "redux";
 import { Cardapio } from "../../components/cardapio";
-import { ModalCriarPizza } from "../../components/modal/criar-pizza";
-import { ModalBebida } from "../../components/modal/bebidas";
 import history from "../../components/history";
 import { Menu } from "../../components/menu";
+import { ModalBebida } from "../../components/modal/bebidas";
+import { ModalCriarPizza } from "../../components/modal/criar-pizza";
+import { ModalPizzas } from "../../components/modal/pizzas";
 import { Pizza } from "../../components/pizza";
 import { Rodape } from "../../components/rodape";
 import "../../css/fazer-pedido.css";
 import "../../css/home.css";
-import { IBebidas } from "../../interfaces/IBebidas";
-import { IPizzas } from "../../interfaces/IPizzas";
+import { IUsuario } from "../../interfaces/IUsuario";
 import { usuarioAutenticado } from "../../js/scripts";
 import * as action from "./actions";
 import { FazerBusca } from "./fazer-busca";
-import { IIngredientes } from "../../interfaces/IIngredientes";
-import { IUsuario } from "../../interfaces/IUsuario";
-import { connect } from "react-redux";
-import { bindActionCreators } from "redux";
 
 interface IProps {
 	getIngredientes: Function;
@@ -53,19 +51,6 @@ class FazerPedido extends Component<IProps, IState> {
 		if (!this.props.store.usuario.usuario.nome) getUsuario();
 	}
 
-	handlePedirBebida = (categoria: string) => {
-		// let novaListaBebidas = listaBebidas.find(
-		// 	(b) => b[0].categoria === categoria
-		// );
-		// console.log("1.0", novaListaBebidas);
-		// if (novaListaBebidas) {
-		// 	novaListaBebidas.forEach((bebida) => {
-		// 		bebida.qtd = 0;
-		// 	});
-		// 	setListaPedirBebida([...novaListaBebidas]);
-		// }
-	};
-
 	render() {
 		return (
 			<>
@@ -74,18 +59,9 @@ class FazerPedido extends Component<IProps, IState> {
 				<FazerBusca {...this.props} />
 				<Cardapio {...this.props} habilitarPedido={true} />
 				<Rodape />
-				{this.props.store.pizzaria.ingredientes &&
-					this.props.store.pizzaria.ingredientes.length > 0 && (
-						<ModalCriarPizza {...this.props} />
-					)}
-				{this.props.store.pizzaria.listaBebidasGrupoFiltro.length >
-					0 && (
-					<ModalBebida
-						{...this.props}
-						// handleQtdMenos={handleQtdMenos}
-						// handleQtdMais={handleQtdMais}
-					/>
-				)}
+				<ModalCriarPizza {...this.props} />
+				<ModalBebida {...this.props} />
+				<ModalPizzas {...this.props} />
 			</>
 		);
 	}

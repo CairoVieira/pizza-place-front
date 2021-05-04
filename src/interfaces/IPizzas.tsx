@@ -18,6 +18,7 @@ interface IPizzas {
 	nome: string;
 	valor: number;
 	itens_pizza: Array<IItensPizza>;
+	imagem: string;
 	created_at: Date;
 	updated_at: Date;
 }

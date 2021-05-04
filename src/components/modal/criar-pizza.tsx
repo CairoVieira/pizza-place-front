@@ -12,6 +12,7 @@ const INITIAL_STATE: IState = {
 };
 
 const ModalCriarPizza = (props: any) => {
+	const { listaIngredientes } = props.store.pizzaria;
 	const [qtdPizza, setQtdPizza] = useState(INITIAL_STATE.qtdPizza);
 
 	let arrayMassa: Array<IIngredientes> = [];
@@ -19,16 +20,16 @@ const ModalCriarPizza = (props: any) => {
 	let arrayToppings: Array<IIngredientes> = [];
 
 	const init = () => {
-		if (props.store.ingredientes) {
-			arrayMassa = props.store.ingredientes.filter(
+		if (listaIngredientes.length > 0) {
+			arrayMassa = listaIngredientes.filter(
 				(ingrediente: IIngredientes) =>
 					ingrediente.categoria === "MASSA"
 			);
-			arrayMolho = props.ingredientes.filter(
+			arrayMolho = listaIngredientes.filter(
 				(ingrediente: IIngredientes) =>
 					ingrediente.categoria === "MOLHOS"
 			);
-			arrayToppings = props.ingredientes.filter(
+			arrayToppings = listaIngredientes.filter(
 				(ingrediente: IIngredientes) =>
 					ingrediente.categoria === "TOPPINGS"
 			);

@@ -2,7 +2,10 @@ import {
 	FILTRAR_BEBIDAS_GRUPO,
 	FILTRAR_PIZZAS,
 	LISTA_BEBIDAS_GRUPO,
+	LISTA_INGREDIENTES,
 	LISTA_PIZZAS,
+	SET_BEBIDA_SELECIONADA,
+	SET_PIZZA_SELECIONADA,
 } from "../../app/reducersTypes";
 
 const INITIAL_STATE = {
@@ -10,8 +13,9 @@ const INITIAL_STATE = {
 	listaPizzasFiltro: [],
 	listaBebidasGrupo: [],
 	listaBebidasGrupoFiltro: [],
-	pizzaSelecionada: undefined,
-	bebidaSelecionada: undefined,
+	listaIngredientes: [],
+	pizzaSelecionada: {},
+	bebidaSelecionada: [],
 };
 
 const reducer = (state = INITIAL_STATE, action: any = {}) => {
@@ -28,8 +32,12 @@ const reducer = (state = INITIAL_STATE, action: any = {}) => {
 				listaBebidasGrupo: action.payload,
 				listaBebidasGrupoFiltro: action.payload,
 			};
+		case LISTA_INGREDIENTES:
+			return {
+				...state,
+				listaIngredientes: action.payload,
+			};
 		case FILTRAR_PIZZAS:
-			console.log("1.1", action);
 			return {
 				...state,
 				listaPizzasFiltro: action.payload,
@@ -38,6 +46,16 @@ const reducer = (state = INITIAL_STATE, action: any = {}) => {
 			return {
 				...state,
 				listaBebidasGrupoFiltro: action.payload,
+			};
+		case SET_BEBIDA_SELECIONADA:
+			return {
+				...state,
+				bebidaSelecionada: action.payload,
+			};
+		case SET_PIZZA_SELECIONADA:
+			return {
+				...state,
+				pizzaSelecionada: action.payload,
 			};
 		default:
 			return state;
