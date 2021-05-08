@@ -1,6 +1,6 @@
 import axios from "axios";
 import Swal from "sweetalert2";
-import { SET_USUARIO } from "../../app/reducersTypes";
+import { SET_USUARIO } from "../../store/reducersTypes";
 import history from "../../components/history";
 
 const API_URL = process.env.PROD ? "" : "http://localhost:5000";

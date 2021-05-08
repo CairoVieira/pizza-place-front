@@ -55,17 +55,18 @@ const Menu = (props: any) => {
 							Contato
 						</a>
 					</li>
-					{!usuario.usuario.nome && (
+					{!usuario.nome && (
 						<li className="nav-item ">
 							<Link className="nav-link btn-login" to="/login">
 								Login
 							</Link>
 						</li>
 					)}
-					{usuario.usuario.nome && (
+					{console.log("props.store=", props.store)}
+					{usuario.nome && (
 						<li className="nav-item ">
 							<button className="nav-link btn-login">
-								{usuario.usuario.nome.split(" ")[0]}
+								{usuario.nome.split(" ")[0]}
 							</button>
 						</li>
 					)}

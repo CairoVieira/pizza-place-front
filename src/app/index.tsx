@@ -5,7 +5,7 @@ import Login from "../pages/login";
 import history from "../components/history";
 import { Provider } from "react-redux";
 
-import store from "./configStore";
+import store from "../store";
 
 const Routes = () => {
 	return (

@@ -34,7 +34,7 @@ const FazerBusca = (props: any) => {
 		<div className="container-fluid fazer-busca">
 			<div className="row">
 				<div className="col-sm-12 col-md-12 col-lg-12 fazer-busca-wrapper">
-					<div className="fazer-busca-box">
+					<div className="fazer-busca-box mr-3">
 						<input
 							type="text"
 							placeholder="Buscar no cardápio"
@@ -42,6 +42,9 @@ const FazerBusca = (props: any) => {
 						/>
 						<i className="fas fa-search  position-absolute"></i>
 					</div>
+					<button className="btn-checkout ml-3">
+						<i className="fas fa-shopping-bag"></i>
+					</button>
 				</div>
 			</div>
 		</div>

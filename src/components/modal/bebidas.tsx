@@ -1,5 +1,5 @@
+import Swal from "sweetalert2";
 import "../../css/modal-bebida.css";
-import criarPizza from "../../images/criar-pizza.jpg";
 import { IBebidas } from "../../interfaces/IBebidas";
 
 const ModalBebida = (props: any) => {
@@ -8,6 +8,8 @@ const ModalBebida = (props: any) => {
 	const handleQtdMenos = (bebida: IBebidas) => {
 		if (bebida.qtd > 0) {
 			let novaBebida = bebida;
+			bebidaSelecionada[0].valorTotal =
+				bebidaSelecionada[0].valorTotal - novaBebida.valor;
 			novaBebida.qtd = novaBebida.qtd - 1;
 
 			const index = bebidaSelecionada.indexOf(bebida);
@@ -22,6 +24,8 @@ const ModalBebida = (props: any) => {
 	const handleQtdMais = (bebida: IBebidas) => {
 		if (bebida.qtd < 10) {
 			let novaBebida = bebida;
+			bebidaSelecionada[0].valorTotal =
+				bebidaSelecionada[0].valorTotal + novaBebida.valor;
 			novaBebida.qtd = novaBebida.qtd + 1;
 
 			const index = bebidaSelecionada.indexOf(bebida);
@@ -31,6 +35,21 @@ const ModalBebida = (props: any) => {
 			novaBebidasSelecionadas.splice(index, 0, novaBebida);
 			props.setBebidaSelecionada(novaBebidasSelecionadas);
 		}
+	};
+
+	const handleAddPedido = () => {
+		let mensagem = "Foi adicionado ";
+		bebidaSelecionada.forEach((bebida: IBebidas) => {
+			if (bebida.qtd > 0) {
+				props.addPedido(null, null, bebida);
+
+				mensagem += `${bebida.qtd} ${bebida.categoria}${
+					bebida.qtd > 1 ? "s" : ""
+				}  de ${bebida.nome}, `;
+			}
+		});
+		mensagem += "ao seu pedido!";
+		Swal.fire("Bebida adicionada", mensagem, "success");
 	};
 
 	return (
@@ -57,15 +76,16 @@ const ModalBebida = (props: any) => {
 						<div className="container-fluid">
 							<div className="row">
 								<div className="col-sm-12 col-md-6 col-lg-6 criar-pizza-img-center">
-									{bebidaSelecionada.length > 0 && <img 
-										className="criar-pizza-img"
-										src={
+									{bebidaSelecionada.length > 0 && (
+										<img
+											className="criar-pizza-img"
+											src={
 												require(`../../images/${bebidaSelecionada[0].imagem}.jpg`)
 													.default
 											}
-										alt="bebida"
-									/>
-										}
+											alt="bebida"
+										/>
+									)}
 								</div>
 								<div className="col-sm-12 col-md-6 col-lg-6">
 									<div className="row mt-3 mb-3">
@@ -125,12 +145,16 @@ const ModalBebida = (props: any) => {
 											<label className="pizza-valor">
 												R${" "}
 												{bebidaSelecionada.length > 0 &&
-													bebidaSelecionada[0].valor}
+													bebidaSelecionada[0]
+														.valorTotal}
 											</label>
 										</div>
 									</div>
 									<div className="row mt-3 pt-1 pb-1 criar-pizza-botoes">
-										<button className="btn-criar-pizza btn-add-pizza">
+										<button
+											className="btn-criar-pizza btn-add-pizza"
+											onClick={handleAddPedido}
+										>
 											Adicionar
 										</button>
 									</div>

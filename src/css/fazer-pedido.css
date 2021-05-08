@@ -75,3 +75,10 @@
 	background-color: var(--white);
 	margin-top: 0 !important;
 }
+
+.btn-checkout {
+	border: none;
+	background: transparent;
+	cursor: pointer;
+	font-size: 2.5rem;
+}

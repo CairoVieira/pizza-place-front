@@ -6,3 +6,7 @@ export const FILTRAR_PIZZAS = "filtrar_pizzas";
 export const FILTRAR_BEBIDAS_GRUPO = "filtrar_bebidas_grupo";
 export const SET_BEBIDA_SELECIONADA = "set_bebida_selecionada";
 export const SET_PIZZA_SELECIONADA = "set_pizza_selecionada";
+export const SET_PEDIDO_USUARIO = "set_pedido_usuario";
+export const SET_PEDIDO_PIZZA = "set_pedido_pizza";
+export const SET_PEDIDO_VALOR = "set_pedido_valor";
+export const SET_PEDIDO_BEBIDA = "set_pedido_bebida";

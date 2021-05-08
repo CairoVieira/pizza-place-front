@@ -1,17 +1,8 @@
-import { useState } from "react";
 import "../../css/criar-pizza.css";
 import { IPizzas } from "../../interfaces/IPizzas";
 
-interface IState {
-	qtdPizza: number;
-}
-const INITIAL_STATE: IState = {
-	qtdPizza: 1,
-};
-
 const ModalPizzas = (props: any) => {
 	const { pizzaSelecionada } = props.store.pizzaria;
-	const [qtdPizza, setQtdPizza] = useState(INITIAL_STATE.qtdPizza);
 
 	const setDescricaoCardapio = (pizza: IPizzas) => {
 		let descricao = pizza.itens_pizza.find(
@@ -35,11 +26,25 @@ const ModalPizzas = (props: any) => {
 	};
 
 	const handleQtdMenos = () => {
-		if (qtdPizza > 0) setQtdPizza(qtdPizza - 1);
+		if (pizzaSelecionada.qtd > 1) {
+			const novaPizza = pizzaSelecionada;
+			novaPizza.valorTotal = novaPizza.valorTotal - novaPizza.valor;
+			novaPizza.qtd = novaPizza.qtd - 1;
+			props.setPizzaSelecionada(novaPizza);
+		}
 	};
 
 	const handleQtdMais = () => {
-		if (qtdPizza < 10) setQtdPizza(qtdPizza + 1);
+		if (pizzaSelecionada.qtd < 10) {
+			const novaPizza = pizzaSelecionada;
+			novaPizza.valorTotal = novaPizza.valorTotal + novaPizza.valor;
+			novaPizza.qtd = novaPizza.qtd + 1;
+			props.setPizzaSelecionada(novaPizza);
+		}
+	};
+
+	const handleAddPedido = () => {
+		props.addPedido(null, pizzaSelecionada);
 	};
 
 	return (
@@ -96,15 +101,19 @@ const ModalPizzas = (props: any) => {
 									</div>
 
 									<div className="row mt-5">
-										<div className="col-sm-9 col-md-9 col-lg-9">
+										<div className="col-sm-12 col-md-8 col-lg-8">
 											<label className="pizza-serve">
 												<i className="fas fa-user mr-1"></i>
 												<strong>serve 1 pessoa</strong>
 											</label>
 										</div>
-										<div className="col-sm-3 col-md-3 col-lg-3 text-left">
+										<div className="col-sm-12 col-md-4 col-lg-4 text-left">
 											<label className="pizza-valor">
-												R$ {pizzaSelecionada.valor}
+												R${" "}
+												{pizzaSelecionada.valorTotal &&
+													pizzaSelecionada.valorTotal.toFixed(
+														2
+													)}
 											</label>
 										</div>
 									</div>
@@ -124,12 +133,17 @@ const ModalPizzas = (props: any) => {
 											<button onClick={handleQtdMenos}>
 												-
 											</button>
-											<label>{qtdPizza}</label>
+											<label>
+												{pizzaSelecionada.qtd}
+											</label>
 											<button onClick={handleQtdMais}>
 												+
 											</button>
 										</div>
-										<button className="btn-criar-pizza btn-add-pizza">
+										<button
+											className="btn-criar-pizza btn-add-pizza"
+											onClick={handleAddPedido}
+										>
 											Adicionar
 										</button>
 									</div>

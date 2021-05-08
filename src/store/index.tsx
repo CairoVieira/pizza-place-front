@@ -1,9 +1,10 @@
 import { createStore, applyMiddleware, combineReducers } from "redux";
 import ReduxThunk from "redux-thunk";
-import pizzaria from "../pages/home/reducer";
-import usuario from "../pages/fazer-pedido/reducer";
+import pizzaria from "./pizzaria";
+import usuario from "./usuario";
+import pedido from "./pedido";
 
-const reducers = combineReducers({ pizzaria, usuario });
+const reducers = combineReducers({ pizzaria, usuario, pedido });
 export const middleware = [ReduxThunk];
 
 const createStoreWithMiddleware = applyMiddleware(...middleware)(createStore);

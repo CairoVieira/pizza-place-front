@@ -84,6 +84,11 @@ const Cardapio = (props: any) => {
 		return descricao;
 	};
 
+	const handlePizza = (pizza: IPizzas) => {
+		props.setPizzaSelecionada("");
+		props.setPizzaSelecionada(pizza);
+	};
+
 	return (
 		<div id="cardapio" className="container-fluid mt-4">
 			{!props.habilitarPedido && (
@@ -113,7 +118,7 @@ const Cardapio = (props: any) => {
 								}
 								onClick={() =>
 									props.setPizzaSelecionada
-										? props.setPizzaSelecionada(pizza)
+										? handlePizza(pizza)
 										: ""
 								}
 							>
@@ -172,7 +177,7 @@ const Cardapio = (props: any) => {
 					criar meu sabor
 				</button>
 				{props.habilitarPedido && (
-					<button className="cardapio-botao">fazer meu pedido</button>
+					<button className="cardapio-botao">finalizar pedido</button>
 				)}
 				{!props.habilitarPedido && (
 					<Link className="cardapio-botao" to="/fazer-pedido">

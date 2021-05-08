@@ -1,7 +1,6 @@
 import axios from "axios";
-import { group } from "node:console";
 import Swal from "sweetalert2";
-import { LISTA_BEBIDAS_GRUPO, LISTA_PIZZAS } from "../../app/reducersTypes";
+import { LISTA_BEBIDAS_GRUPO, LISTA_PIZZAS } from "../../store/reducersTypes";
 import { IBebidas } from "../../interfaces/IBebidas";
 
 const API_URL = process.env.PROD ? "" : "http://localhost:5000";
@@ -14,6 +13,8 @@ const getPizzas = () => {
 				for (let index = 0; index < response.data.length; index++) {
 					const element = response.data[index];
 					element.imagem = `pizza-${index + 1}`;
+					element.qtd = 1;
+					element.valorTotal = element.valor;
 				}
 
 				const payload = response.data;
@@ -41,7 +42,8 @@ const getBebidasGrupo = () => {
 					const element = response.data[index];
 					element.forEach((item: IBebidas) => {
 						item.imagem = `bebida-${index + 1}`;
-						item.qtd=0
+						item.qtd = 0;
+						item.valorTotal = 0;
 					});
 				}
 				const payload = response.data;

@@ -6,7 +6,7 @@ import {
 	LISTA_PIZZAS,
 	SET_BEBIDA_SELECIONADA,
 	SET_PIZZA_SELECIONADA,
-} from "../../app/reducersTypes";
+} from "./reducersTypes";
 
 const INITIAL_STATE = {
 	listaPizzas: [],

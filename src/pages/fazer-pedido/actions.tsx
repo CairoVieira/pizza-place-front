@@ -6,11 +6,16 @@ import {
 	FILTRAR_PIZZAS,
 	LISTA_INGREDIENTES,
 	SET_BEBIDA_SELECIONADA,
+	SET_PEDIDO_BEBIDA,
+	SET_PEDIDO_PIZZA,
+	SET_PEDIDO_USUARIO,
+	SET_PEDIDO_VALOR,
 	SET_PIZZA_SELECIONADA,
 	SET_USUARIO,
-} from "../../app/reducersTypes";
+} from "../../store/reducersTypes";
 import { IPizzas } from "../../interfaces/IPizzas";
 import { IBebidas } from "../../interfaces/IBebidas";
+import { IUsuario } from "../../interfaces/IUsuario";
 
 const API_URL = process.env.PROD ? "" : "http://localhost:5000";
 
@@ -53,6 +58,7 @@ const getUsuario = () => {
 		if (usuario) {
 			const payload = JSON.parse(usuario);
 			dispatch({ type: SET_USUARIO, payload });
+			dispatch({ type: SET_PEDIDO_USUARIO, payload });
 		}
 	};
 };
@@ -79,6 +85,44 @@ const setPizzaSelecionada = (pizza: IPizzas) => {
 	};
 };
 
+const addPedido = (usuario: IUsuario, pizza: IPizzas, bebida: IBebidas) => {
+	return (dispatch: any) => {
+		if (usuario) {
+			dispatch({ type: SET_PEDIDO_USUARIO, payload: usuario.id });
+		}
+		if (pizza) {
+			const pedido_pizza = {
+				pizza_id: pizza.id,
+				valor_item_pedido: pizza.valorTotal,
+			};
+			dispatch({ type: SET_PEDIDO_PIZZA, payload: pedido_pizza });
+			dispatch({
+				type: SET_PEDIDO_VALOR,
+				payload: pedido_pizza.valor_item_pedido,
+			});
+			Swal.fire(
+				"Pizza adicionada",
+				`Foi adicionado ${pizza.qtd} ${
+					pizza.qtd > 1 ? "pizzas" : "pizza"
+				} ${pizza.nome} ao seu pedido!`,
+				"success"
+			);
+		}
+
+		if (bebida) {
+			const pedido_bebida = {
+				bebida_id: bebida.id,
+				valor_item_pedido: bebida.qtd * bebida.valor,
+			};
+			dispatch({ type: SET_PEDIDO_BEBIDA, payload: pedido_bebida });
+			dispatch({
+				type: SET_PEDIDO_VALOR,
+				payload: pedido_bebida.valor_item_pedido,
+			});
+		}
+	};
+};
+
 export {
 	getIngredientes,
 	getBebidasGrupo,
@@ -87,4 +131,5 @@ export {
 	handleFiltrarPedido,
 	setBebidaSelecionada,
 	setPizzaSelecionada,
+	addPedido,
 };
