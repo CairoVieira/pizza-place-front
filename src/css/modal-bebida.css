@@ -5,11 +5,10 @@
 	.criar-pizza-escolha {
 		font-size: 2.2rem;
 	}
-	.criar-pizza-radio,
-	.criar-pizza-check {
+	.criar-pizza-radio, .criar-pizza-check {
 		font-size: 1.5rem;
 	}
-	.checkbox > input:checked + span::before {
+	.checkbox>input:checked+span::before {
 		font-size: 1.5rem;
 	}
 	input[type="radio"]:after {
@@ -50,12 +49,11 @@
 	.criar-pizza-input {
 		font-size: 1.1rem;
 	}
-	.criar-pizza-radio,
-	.criar-pizza-check {
+	.criar-pizza-radio, .criar-pizza-check {
 		font-size: 1.1rem;
 		margin-bottom: -0.25rem !important;
 	}
-	.checkbox > input:checked + span::before {
+	.checkbox>input:checked+span::before {
 		font-size: 1.3rem;
 		left: -0.0125rem !important;
 		top: -0.3rem !important;
@@ -84,12 +82,11 @@
 	.criar-pizza-input {
 		font-size: 1rem;
 	}
-	.criar-pizza-radio,
-	.criar-pizza-check {
+	.criar-pizza-radio, .criar-pizza-check {
 		font-size: 1rem;
 		margin-bottom: -0.1rem !important;
 	}
-	.checkbox > input:checked + span::before {
+	.checkbox>input:checked+span::before {
 		font-size: 1.3rem;
 		left: -0.0125rem !important;
 		top: -0.3rem !important;
@@ -106,8 +103,7 @@
 	.criar-pizza-input {
 		font-size: 0.9rem;
 	}
-	.criar-pizza-radio,
-	.criar-pizza-check {
+	.criar-pizza-radio, .criar-pizza-check {
 		font-size: 0.9rem;
 		margin-bottom: -0.1rem !important;
 	}
@@ -125,6 +121,7 @@
 
 .criar-pizza-img {
 	width: 100%;
+	border: 2px solid var(--black);
 }
 
 .btn-qtd-bebida {
@@ -132,6 +129,7 @@
 	width: 6.5rem;
 	min-height: 0.75rem;
 }
+
 .btn-qtd-bebida button {
 	border: none;
 	background-color: var(--white);

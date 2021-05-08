@@ -146,6 +146,7 @@
 
 .criar-pizza-img {
 	width: 100%;
+	border: 2px solid var(--black);
 }
 
 .criar-pizza-input {

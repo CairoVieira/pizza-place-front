@@ -6,6 +6,7 @@ interface IBebidas {
 	categoria: string;
 	created_at: Date;
 	updated_at: Date;
+	imagem: string;
 }
 
 export type { IBebidas };

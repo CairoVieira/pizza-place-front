@@ -1,4 +1,5 @@
 import axios from "axios";
+import { group } from "node:console";
 import Swal from "sweetalert2";
 import { LISTA_BEBIDAS_GRUPO, LISTA_PIZZAS } from "../../app/reducersTypes";
 import { IBebidas } from "../../interfaces/IBebidas";
@@ -36,11 +37,13 @@ const getBebidasGrupo = () => {
 		return axios
 			.get(`${API_URL}/bebidas/grupo`)
 			.then((response) => {
-				response.data.forEach((grupo: IBebidas[]) => {
-					grupo.forEach((item: IBebidas) => {
-						item.qtd = 0;
+				for (let index = 0; index < response.data.length; index++) {
+					const element = response.data[index];
+					element.forEach((item: IBebidas) => {
+						item.imagem = `bebida-${index + 1}`;
+						item.qtd=0
 					});
-				});
+				}
 				const payload = response.data;
 				dispatch({ type: LISTA_BEBIDAS_GRUPO, payload });
 			})

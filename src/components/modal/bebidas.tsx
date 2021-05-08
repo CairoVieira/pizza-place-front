@@ -57,11 +57,15 @@ const ModalBebida = (props: any) => {
 						<div className="container-fluid">
 							<div className="row">
 								<div className="col-sm-12 col-md-6 col-lg-6 criar-pizza-img-center">
-									<img
+									{bebidaSelecionada.length > 0 && <img 
 										className="criar-pizza-img"
-										src={criarPizza}
-										alt="pizza"
+										src={
+												require(`../../images/${bebidaSelecionada[0].imagem}.jpg`)
+													.default
+											}
+										alt="bebida"
 									/>
+										}
 								</div>
 								<div className="col-sm-12 col-md-6 col-lg-6">
 									<div className="row mt-3 mb-3">
