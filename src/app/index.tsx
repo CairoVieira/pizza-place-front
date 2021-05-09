@@ -2,6 +2,7 @@ import { Router, Redirect, Route, Switch } from "react-router-dom";
 import FazerPedido from "../pages/fazer-pedido";
 import Home from "../pages/home";
 import Login from "../pages/login";
+import Checkout from "../pages/checkout";
 import history from "../components/history";
 import { Provider } from "react-redux";
 
@@ -15,6 +16,7 @@ const Routes = () => {
 					<Route path="/" exact component={Home} />
 					<Route path="/login" component={Login} />
 					<Route path="/fazer-pedido" component={FazerPedido} />
+					<Route path="/check-out" component={Checkout} />
 					<Redirect path="*" to="/" />
 				</Switch>
 			</Router>

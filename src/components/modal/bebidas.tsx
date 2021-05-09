@@ -41,7 +41,7 @@ const ModalBebida = (props: any) => {
 		let mensagem = "Foi adicionado ";
 		bebidaSelecionada.forEach((bebida: IBebidas) => {
 			if (bebida.qtd > 0) {
-				props.addPedido(null, null, bebida);
+				props.addPedido(null, null, null, bebida);
 
 				mensagem += `${bebida.qtd} ${bebida.categoria}${
 					bebida.qtd > 1 ? "s" : ""

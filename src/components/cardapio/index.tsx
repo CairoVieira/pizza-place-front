@@ -4,6 +4,7 @@ import { IPizzas } from "../../interfaces/IPizzas";
 
 const Cardapio = (props: any) => {
 	const { listaPizzasFiltro, listaBebidasGrupoFiltro } = props.store.pizzaria;
+	const { pedido } = props.store;
 
 	const setDescricaoCardapio = (pizza: IPizzas) => {
 		let descricao = pizza.itens_pizza.find(
@@ -176,7 +177,12 @@ const Cardapio = (props: any) => {
 				>
 					criar meu sabor
 				</button>
-				{props.habilitarPedido && (
+				{props.habilitarPedido && pedido.itens_pedido.length > 0 && (
+					<Link to="/check-out" className="cardapio-botao">
+						finalizar pedido
+					</Link>
+				)}
+				{props.habilitarPedido && pedido.itens_pedido.length === 0 && (
 					<button className="cardapio-botao">finalizar pedido</button>
 				)}
 				{!props.habilitarPedido && (

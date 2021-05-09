@@ -22,6 +22,7 @@ interface IProps {
 	getPizzas: Function;
 	getUsuario: Function;
 	addPedido: Function;
+	getEnderecosUsuario: Function;
 	store: {
 		pedido: any;
 		pizzaria: any;
@@ -39,6 +40,7 @@ class FazerPedido extends Component<IProps, IState> {
 			getPizzas,
 			getUsuario,
 			addPedido,
+			getEnderecosUsuario,
 		} = this.props;
 
 		if (!usuarioAutenticado()) return history.push("/login");
@@ -49,8 +51,13 @@ class FazerPedido extends Component<IProps, IState> {
 			getBebidasGrupo();
 		if (this.props.store.pizzaria.listaPizzasFiltro.length === 0)
 			getPizzas();
+		console.log("1.0", this.props.store);
 		if (!this.props.store.usuario.nome) getUsuario();
-		else addPedido(this.props.store.usuario);
+		else {
+			addPedido(this.props.store.usuario);
+			addPedido(null, this.props.store.usuario.endereco);
+			getEnderecosUsuario(this.props.store.usuario);
+		}
 	}
 
 	render() {

@@ -5,6 +5,7 @@ interface IPedidos {
 	cliente_id: string;
 	endereco_id: string;
 	valor: number;
+	valorTotal: number;
 	metodo_pagamento: string;
 	itens_pedido: Array<IItensPedido>;
 	created_at: Date;

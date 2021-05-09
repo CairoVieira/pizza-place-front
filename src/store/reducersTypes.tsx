@@ -10,3 +10,7 @@ export const SET_PEDIDO_USUARIO = "set_pedido_usuario";
 export const SET_PEDIDO_PIZZA = "set_pedido_pizza";
 export const SET_PEDIDO_VALOR = "set_pedido_valor";
 export const SET_PEDIDO_BEBIDA = "set_pedido_bebida";
+export const SET_PEDIDO_ENDERECO = "set_pedido_endereco";
+export const SET_LISTA_ENDERECOS = "set_lista_enderecos";
+export const SET_ENDERECO = "set_endereco";
+export const SET_PEDIDO_PAGAMENTO = "set_pedido_pagamento";

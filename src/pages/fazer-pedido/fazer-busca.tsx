@@ -1,8 +1,10 @@
 import { IBebidas } from "../../interfaces/IBebidas";
 import { IPizzas } from "../../interfaces/IPizzas";
+import { Link } from "react-router-dom";
 
 const FazerBusca = (props: any) => {
 	const { listaPizzas, listaBebidasGrupo } = props.store.pizzaria;
+	const { pedido } = props.store;
 	const handleChange = (e: any) => {
 		const { value } = e.target;
 		let novaListaPizzas: IPizzas[] = [];
@@ -42,9 +44,17 @@ const FazerBusca = (props: any) => {
 						/>
 						<i className="fas fa-search  position-absolute"></i>
 					</div>
-					<button className="btn-checkout ml-3">
-						<i className="fas fa-shopping-bag"></i>
-					</button>
+
+					{pedido.itens_pedido.length > 0 && (
+						<Link to="/check-out" className="btn-checkout ml-3">
+							<i className="fas fa-shopping-bag"></i>
+						</Link>
+					)}
+					{pedido.itens_pedido.length === 0 && (
+						<button className="btn-checkout ml-3">
+							<i className="fas fa-shopping-bag"></i>
+						</button>
+					)}
 				</div>
 			</div>
 		</div>

@@ -1,0 +1,41 @@
+.separador {
+	border-right: 2px solid var(--black);
+}
+
+.formulario,
+.box-endereco {
+	background: var(--white);
+	border: 2px solid var(--black);
+}
+
+.nav-pills .nav-link.active,
+.nav-pills .show > .nav-link {
+	background: transparent;
+	border-radius: 0;
+	border-bottom: solid 2px var(--black);
+}
+
+.btn-trocar-endereco {
+	border: none;
+	background: transparent;
+	color: var(--yellow);
+}
+
+.box-endereco {
+	padding: 0.5rem;
+}
+
+.nav-item-pagamento {
+	width: 100%;
+	justify-content: left;
+}
+
+.subtotal {
+	border-bottom: 2px solid var(--black);
+	margin-top: -1rem;
+}
+
+.pizza-valor {
+	font-size: 1.8rem;
+	color: seagreen;
+}

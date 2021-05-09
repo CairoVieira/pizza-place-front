@@ -1,6 +1,8 @@
 import { IItensPedido } from "../interfaces/IItensPedido";
 import {
 	SET_PEDIDO_BEBIDA,
+	SET_PEDIDO_ENDERECO,
+	SET_PEDIDO_PAGAMENTO,
 	SET_PEDIDO_PIZZA,
 	SET_PEDIDO_USUARIO,
 	SET_PEDIDO_VALOR,
@@ -21,6 +23,10 @@ const reducer = (state = INITIAL_STATE, action: any = {}) => {
 	switch (action.type) {
 		case SET_PEDIDO_USUARIO:
 			return { ...state, cliente_id: action.payload };
+		case SET_PEDIDO_ENDERECO:
+			return { ...state, endereco_id: action.payload };
+		case SET_PEDIDO_PAGAMENTO:
+			return { ...state, metodo_pagamento: action.payload };
 		case SET_PEDIDO_VALOR:
 			return { ...state, valor: state.valor + action.payload };
 		case SET_PEDIDO_PIZZA:

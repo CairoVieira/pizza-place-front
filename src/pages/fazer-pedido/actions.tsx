@@ -6,7 +6,10 @@ import {
 	FILTRAR_PIZZAS,
 	LISTA_INGREDIENTES,
 	SET_BEBIDA_SELECIONADA,
+	SET_LISTA_ENDERECOS,
 	SET_PEDIDO_BEBIDA,
+	SET_PEDIDO_ENDERECO,
+	SET_PEDIDO_PAGAMENTO,
 	SET_PEDIDO_PIZZA,
 	SET_PEDIDO_USUARIO,
 	SET_PEDIDO_VALOR,
@@ -16,6 +19,7 @@ import {
 import { IPizzas } from "../../interfaces/IPizzas";
 import { IBebidas } from "../../interfaces/IBebidas";
 import { IUsuario } from "../../interfaces/IUsuario";
+import { IEndereco } from "../../interfaces/IEndereco";
 
 const API_URL = process.env.PROD ? "" : "http://localhost:5000";
 
@@ -56,9 +60,14 @@ const getUsuario = () => {
 	return (dispatch: any) => {
 		const usuario = sessionStorage.getItem("user");
 		if (usuario) {
-			const payload = JSON.parse(usuario);
+			const payload: IUsuario = JSON.parse(usuario);
 			dispatch({ type: SET_USUARIO, payload });
-			dispatch({ type: SET_PEDIDO_USUARIO, payload });
+			dispatch({ type: SET_PEDIDO_USUARIO, payload: payload.id });
+			dispatch({
+				type: SET_PEDIDO_ENDERECO,
+				payload: payload.endereco.id,
+			});
+			dispatch(getEnderecosUsuario(payload));
 		}
 	};
 };
@@ -85,10 +94,20 @@ const setPizzaSelecionada = (pizza: IPizzas) => {
 	};
 };
 
-const addPedido = (usuario: IUsuario, pizza: IPizzas, bebida: IBebidas) => {
+const addPedido = (
+	usuario: IUsuario,
+	endereco: IEndereco,
+	pizza: IPizzas,
+	bebida: IBebidas,
+	pagamento: string
+) => {
 	return (dispatch: any) => {
 		if (usuario) {
 			dispatch({ type: SET_PEDIDO_USUARIO, payload: usuario.id });
+		}
+
+		if (endereco) {
+			dispatch({ type: SET_PEDIDO_ENDERECO, payload: endereco.id });
 		}
 		if (pizza) {
 			const pedido_pizza = {
@@ -120,6 +139,31 @@ const addPedido = (usuario: IUsuario, pizza: IPizzas, bebida: IBebidas) => {
 				payload: pedido_bebida.valor_item_pedido,
 			});
 		}
+
+		if (pagamento) {
+			dispatch({ type: SET_PEDIDO_PAGAMENTO, payload: pagamento });
+		}
+	};
+};
+
+const getEnderecosUsuario = (usuario: IUsuario) => {
+	return (dispatch: any) => {
+		return axios
+			.get(`${API_URL}/enderecos/cliente/${usuario.id}`)
+			.then((response) => {
+				const payload = response.data;
+				dispatch({ type: SET_LISTA_ENDERECOS, payload });
+			})
+			.catch((err) => {
+				if (err.response && err.response.status === 500)
+					Swal.fire("Atenção", `${err.response.data.error}`, "error");
+				else
+					Swal.fire(
+						"Atenção",
+						"Ocorreu um erro ao buscar os endereços do usuário",
+						"error"
+					);
+			});
 	};
 };
 
@@ -132,4 +176,5 @@ export {
 	setBebidaSelecionada,
 	setPizzaSelecionada,
 	addPedido,
+	getEnderecosUsuario,
 };

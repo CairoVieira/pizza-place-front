@@ -44,7 +44,7 @@ const ModalPizzas = (props: any) => {
 	};
 
 	const handleAddPedido = () => {
-		props.addPedido(null, pizzaSelecionada);
+		props.addPedido(null, null, pizzaSelecionada);
 	};
 
 	return (

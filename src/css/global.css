@@ -17,6 +17,11 @@ body {
 	color: var(--text-color);
 }
 
+.btn-secundario {
+	background: transparent;
+	color: var(--gray);
+}
+
 @media (min-width: 1367px) {
 	html {
 		font-size: 94.75%;
