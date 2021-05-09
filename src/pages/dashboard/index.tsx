@@ -1,13 +1,13 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
-import { Menu } from "../../components/menu/navbar";
+import { SideBar } from "../../components/menu/sidebar";
+import "../../css/dashboard.css";
 import "../../css/fazer-pedido.css";
 import "../../css/home.css";
 import * as action from "./actions";
-import { FormularioCheckout } from "./formulario";
-import "../../css/checkout.css";
-import { ModalEnderecos } from "../../components/modal/endereco";
+import { sideBar } from "../../js/scripts";
+import { Dash } from "./dash";
 
 interface IProps {
 	addPedido: Function;
@@ -15,18 +15,16 @@ interface IProps {
 
 interface IState {}
 
-class Checkout extends Component<IProps, IState> {
+class Dashboard extends Component<IProps, IState> {
 	componentDidMount() {
-		const { addPedido } = this.props;
-		addPedido(null, null, null, null, "CREDITO");
+		sideBar();
 	}
 
 	render() {
 		return (
 			<>
-				<Menu {...this.props} />
-				<FormularioCheckout {...this.props} />
-				<ModalEnderecos {...this.props} />
+				<SideBar {...this.props} />
+				<Dash {...this.props} />
 			</>
 		);
 	}
@@ -40,4 +38,4 @@ const mapDispatchToProps = (dispatch: any) => {
 	return bindActionCreators(action, dispatch);
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(Checkout);
+export default connect(mapStateToProps, mapDispatchToProps)(Dashboard);

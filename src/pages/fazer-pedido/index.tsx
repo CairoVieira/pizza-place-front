@@ -3,7 +3,7 @@ import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
 import { Cardapio } from "../../components/cardapio";
 import history from "../../components/history";
-import { Menu } from "../../components/menu";
+import { Menu } from "../../components/menu/navbar";
 import { ModalBebida } from "../../components/modal/bebidas";
 import { ModalCriarPizza } from "../../components/modal/criar-pizza";
 import { ModalPizzas } from "../../components/modal/pizzas";

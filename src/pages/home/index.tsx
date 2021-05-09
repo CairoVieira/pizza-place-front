@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
 import { Cardapio } from "../../components/cardapio";
-import { Menu } from "../../components/menu";
+import { Menu } from "../../components/menu/navbar";
 import { Pizza } from "../../components/pizza";
 import { Rodape } from "../../components/rodape";
 import "../../css/home.css";

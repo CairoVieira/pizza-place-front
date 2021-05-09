@@ -1,7 +1,7 @@
 import { Component } from "react";
 import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
-import { Menu } from "../../components/menu";
+import { Menu } from "../../components/menu/navbar";
 import { loginScripts } from "../../js/scripts";
 import * as action from "./actions";
 import { FormularioLogin } from "./formulario";

@@ -1,5 +1,6 @@
 import axios from "axios";
 import Swal from "sweetalert2";
+import history from "../../components/history";
 import { IBebidas } from "../../interfaces/IBebidas";
 import { IEndereco } from "../../interfaces/IEndereco";
 import { IPedidos } from "../../interfaces/IPedido";
@@ -46,7 +47,9 @@ const fazerPedido = (pedido: IPedidos) => {
 					"Pedido realizado!",
 					`Pedido #${payload.id} recebido!`,
 					"success"
-				);
+				).then(() => {
+					history.push("/dashboard");
+				});
 			})
 			.catch((err) => {
 				if (err.response && err.response.status === 500)

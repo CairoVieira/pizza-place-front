@@ -1,3 +1,5 @@
+import * as $ from "jquery";
+
 export function loginScripts() {
 	const signUpButton = document.getElementById("signUp");
 	const signInButton = document.getElementById("signIn");
@@ -18,4 +20,26 @@ export function usuarioAutenticado() {
 	if (!usuario) return false;
 
 	return true;
+}
+
+export function sideBar() {
+	$(document).ready(function () {
+		$(".side-bar-logo").on("click", function () {
+			$(".side-bar").toggleClass("clicked");
+			$(".dashboard-background").toggleClass("clicked");
+			$(".side-bar-expanded").toggleClass("display");
+			$(".side-bar-collapsed").toggleClass("display");
+			$(".side-bar-logo").toggleClass("display");
+			$(".side-bar-btn-collapsed").toggleClass("display");
+		});
+
+		$(".side-bar-btn-collapsed  button").on("click", function () {
+			$(".side-bar").toggleClass("clicked");
+			$(".dashboard-background").toggleClass("clicked");
+			$(".side-bar-expanded").toggleClass("display");
+			$(".side-bar-collapsed").toggleClass("display");
+			$(".side-bar-logo").toggleClass("display");
+			$(".side-bar-btn-collapsed").toggleClass("display");
+		});
+	});
 }
