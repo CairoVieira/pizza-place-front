@@ -58,7 +58,7 @@ const Dash = (props: any) => {
 												}
 												,{" "}
 												{pedido.ultimo_pedido.endereco
-													.complemento != ""
+													.complemento !== ""
 													? pedido.ultimo_pedido
 															.endereco
 															.complemento + ", "

@@ -4,7 +4,7 @@ import logo from "../../images/PizzaPlaceLogo.png";
 
 const Menu = (props: any) => {
 	const { usuario } = props.store;
-	console.log("HERE==", props.store.pedido);
+	console.log("HERE==", props.store.pedido.criar_pizza);
 	return (
 		<nav className="navbar navbar-expand-lg navbar-expand-sm bg-menu">
 			<button

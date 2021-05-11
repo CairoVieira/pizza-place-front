@@ -6,7 +6,7 @@ const SideBar = (props: any) => {
 	return (
 		<div className="side-bar">
 			<div className="side-bar-logo">
-				<img src={imgLogo} />
+				<img alt="imagem de uma pizza" src={imgLogo} />
 			</div>
 			<div className="side-bar-btn-collapsed display">
 				<button>

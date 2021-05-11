@@ -15,3 +15,6 @@ export const SET_LISTA_ENDERECOS = "set_lista_enderecos";
 export const SET_ENDERECO = "set_endereco";
 export const SET_PEDIDO_PAGAMENTO = "set_pedido_pagamento";
 export const SET_ULTIMO_PEDIDO = "set_ultimo_pedido";
+export const SET_CRIAR_PIZZA_NOME = "set_criar_pizza_nome";
+export const SET_CRIAR_PIZZA_ITENS = "set_criar_pizza_itens";
+export const SET_CRIAR_PIZZA_ITENS_ADD = "set_criar_pizza_itens_add";

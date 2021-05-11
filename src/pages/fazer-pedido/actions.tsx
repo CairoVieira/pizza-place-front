@@ -6,6 +6,9 @@ import {
 	FILTRAR_PIZZAS,
 	LISTA_INGREDIENTES,
 	SET_BEBIDA_SELECIONADA,
+	SET_CRIAR_PIZZA_ITENS,
+	SET_CRIAR_PIZZA_ITENS_ADD,
+	SET_CRIAR_PIZZA_NOME,
 	SET_LISTA_ENDERECOS,
 	SET_PEDIDO_BEBIDA,
 	SET_PEDIDO_ENDERECO,
@@ -167,6 +170,24 @@ const getEnderecosUsuario = (usuario: IUsuario) => {
 	};
 };
 
+const setCriarPizzaNome = (nome: string) => {
+	return (dispatch: any) => {
+		dispatch({ type: SET_CRIAR_PIZZA_NOME, payload: nome });
+	};
+};
+
+const setCriarPizzaItens = (itensPizza: string[]) => {
+	return (dispatch: any) => {
+		dispatch({ type: SET_CRIAR_PIZZA_ITENS, payload: itensPizza });
+	};
+};
+
+const setCriarPizzaItensAdd = (item: string[]) => {
+	return (dispatch: any) => {
+		dispatch({ type: SET_CRIAR_PIZZA_ITENS_ADD, payload: item });
+	};
+};
+
 export {
 	getIngredientes,
 	getBebidasGrupo,
@@ -177,4 +198,7 @@ export {
 	setPizzaSelecionada,
 	addPedido,
 	getEnderecosUsuario,
+	setCriarPizzaNome,
+	setCriarPizzaItens,
+	setCriarPizzaItensAdd,
 };

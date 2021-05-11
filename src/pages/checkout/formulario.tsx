@@ -1,5 +1,4 @@
 import React from "react";
-import { Link } from "react-router-dom";
 import { IBebidas } from "../../interfaces/IBebidas";
 import { IEndereco } from "../../interfaces/IEndereco";
 import { IItensPedido } from "../../interfaces/IItensPedido";
@@ -94,8 +93,7 @@ const FormularioCheckout = (props: any) => {
 											aria-selected="false"
 											onClick={() => {
 												const end: IEndereco = {
-													id:
-														"aee8faa7-703d-456e-9f0d-970829c988a8",
+													id: "aee8faa7-703d-456e-9f0d-970829c988a8",
 													bairro: "",
 													cep: "",
 													cidade: "",
