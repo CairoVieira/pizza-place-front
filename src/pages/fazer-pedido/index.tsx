@@ -51,7 +51,6 @@ class FazerPedido extends Component<IProps, IState> {
 			getBebidasGrupo();
 		if (this.props.store.pizzaria.listaPizzasFiltro.length === 0)
 			getPizzas();
-		console.log("1.0", this.props.store);
 		if (!this.props.store.usuario.nome) getUsuario();
 		else {
 			addPedido(this.props.store.usuario);

@@ -6,6 +6,7 @@ import {
 	SET_PEDIDO_PIZZA,
 	SET_PEDIDO_USUARIO,
 	SET_PEDIDO_VALOR,
+	SET_ULTIMO_PEDIDO,
 } from "./reducersTypes";
 
 const INITIAL_STATE = {
@@ -15,6 +16,9 @@ const INITIAL_STATE = {
 	valor: 0,
 	metodo_pagamento: "",
 	itens_pedido: [],
+	ultimo_pedido: {
+		itens_pedido: [],
+	},
 };
 
 const reducer = (state = INITIAL_STATE, action: any = {}) => {
@@ -47,6 +51,8 @@ const reducer = (state = INITIAL_STATE, action: any = {}) => {
 				...state,
 				itens_pedido: itens,
 			};
+		case SET_ULTIMO_PEDIDO:
+			return { ...state, ultimo_pedido: action.payload };
 		default:
 			return state;
 	}

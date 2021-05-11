@@ -18,7 +18,7 @@ const SideBar = (props: any) => {
 
 			<ul className="side-bar-expanded">
 				<li className="side-bar-top">
-					<Link to="#about">Home</Link>
+					<Link to="/">Home</Link>
 				</li>
 				<li>
 					<Link to="#services">Minhas Pizzas</Link>
@@ -36,12 +36,19 @@ const SideBar = (props: any) => {
 					<Link to="#contact">Trocar Senha</Link>
 				</li>
 				<li className="side-bar-bottom">
-					<Link to="#contact">Sair</Link>
+					<Link
+						to="/"
+						onClick={() => {
+							sessionStorage.removeItem("user");
+						}}
+					>
+						Sair
+					</Link>
 				</li>
 			</ul>
 			<ul className="side-bar-collapsed display">
 				<li>
-					<Link to="#about">
+					<Link to="/">
 						<i className="fas fa-home"></i>
 					</Link>
 				</li>
@@ -71,7 +78,12 @@ const SideBar = (props: any) => {
 					</Link>
 				</li>
 				<li className="side-bar-collapsed-bottom">
-					<Link to="#contact">
+					<Link
+						to="/"
+						onClick={() => {
+							sessionStorage.removeItem("user");
+						}}
+					>
 						<i className="fas fa-sign-out-alt"></i>
 					</Link>
 				</li>

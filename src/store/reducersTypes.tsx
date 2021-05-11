@@ -14,3 +14,4 @@ export const SET_PEDIDO_ENDERECO = "set_pedido_endereco";
 export const SET_LISTA_ENDERECOS = "set_lista_enderecos";
 export const SET_ENDERECO = "set_endereco";
 export const SET_PEDIDO_PAGAMENTO = "set_pedido_pagamento";
+export const SET_ULTIMO_PEDIDO = "set_ultimo_pedido";

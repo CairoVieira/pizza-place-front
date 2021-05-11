@@ -50,6 +50,7 @@
 	height: 100vh;
 	margin-left: 190px;
 	transition: 0.75s;
+	padding: 2rem 3rem;
 }
 .dashboard-background.clicked {
 	margin-left: 50px;
@@ -108,4 +109,34 @@
 	bottom: 0;
 	position: absolute;
 	margin-left: -0.5rem;
+}
+
+.dashboard-welcome {
+	background: url("../images/dashboard.jpg");
+	background-size: cover;
+	min-height: 5rem;
+	padding: 1.5rem;
+	border: 2px solid var(--black);
+}
+
+.dashboard-welcome label {
+	line-height: 1rem;
+}
+
+.dash-titulos {
+	margin-top: 3rem;
+	border-bottom: 2px solid var(--black);
+	width: fit-content;
+	margin-bottom: 1.5rem;
+}
+.dash-ultimo-pedido {
+	border: 2px solid var(--black);
+	background: var(--white);
+	min-height: 7rem;
+	padding: 0.5rem;
+}
+
+.dash-ultimas-criacoes {
+	width: 7rem;
+	height: 7rem;
 }

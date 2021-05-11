@@ -16,7 +16,7 @@ export function loginScripts() {
 
 export function usuarioAutenticado() {
 	const usuario = sessionStorage.getItem("user");
-
+	console.log("ada", !usuario);
 	if (!usuario) return false;
 
 	return true;
