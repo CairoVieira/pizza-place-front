@@ -7,6 +7,8 @@ import { IPizzas } from "../../interfaces/IPizzas";
 const FormularioCheckout = (props: any) => {
 	const { pedido, pizzaria, usuario } = props.store;
 
+	console.log("pedido==", pedido);
+
 	const setDescricaoPedido = (item: IItensPedido) => {
 		let textoPedido = "";
 
@@ -17,13 +19,17 @@ const FormularioCheckout = (props: any) => {
 			itemPedido = itemPedido.find(
 				(bebida: IBebidas) => bebida.id === item.bebida_id
 			);
-			textoPedido += `${itemPedido.qtd}x ${itemPedido.nome}`;
+			textoPedido += `${itemPedido.quantidade}x ${itemPedido.nome}`;
 		}
 		itemPedido = pizzaria.listaPizzas.find(
 			(pizza: IPizzas) => pizza.id === item.pizza_id
 		);
 		if (itemPedido) {
-			textoPedido += `${itemPedido.qtd}x pizza ${itemPedido.nome}`;
+			textoPedido += `${itemPedido.quantidade}x pizza ${itemPedido.nome}`;
+		}
+		if (pedido.criar_pizza.itens_pizza.length > 0) {
+			const pizza = pedido.criar_pizza;
+			textoPedido += `${pizza.quantidade}x pizza ${pizza.nome}`;
 		}
 		return textoPedido;
 	};
@@ -282,9 +288,10 @@ const FormularioCheckout = (props: any) => {
 											</div>
 											<div className="col-3 text-right">
 												R${" "}
-												{item.valor_item_pedido.toFixed(
-													2
-												)}
+												{item.valor_item_pedido &&
+													item.valor_item_pedido.toFixed(
+														2
+													)}
 											</div>
 										</div>
 									)

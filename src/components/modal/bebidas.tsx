@@ -6,11 +6,11 @@ const ModalBebida = (props: any) => {
 	const { bebidaSelecionada } = props.store.pizzaria;
 
 	const handleQtdMenos = (bebida: IBebidas) => {
-		if (bebida.qtd > 0) {
+		if (bebida.quantidade > 0) {
 			let novaBebida = bebida;
 			bebidaSelecionada[0].valorTotal =
 				bebidaSelecionada[0].valorTotal - novaBebida.valor;
-			novaBebida.qtd = novaBebida.qtd - 1;
+			novaBebida.quantidade = novaBebida.quantidade - 1;
 
 			const index = bebidaSelecionada.indexOf(bebida);
 			let novaBebidasSelecionadas = bebidaSelecionada.filter(
@@ -22,11 +22,11 @@ const ModalBebida = (props: any) => {
 	};
 
 	const handleQtdMais = (bebida: IBebidas) => {
-		if (bebida.qtd < 10) {
+		if (bebida.quantidade < 10) {
 			let novaBebida = bebida;
 			bebidaSelecionada[0].valorTotal =
 				bebidaSelecionada[0].valorTotal + novaBebida.valor;
-			novaBebida.qtd = novaBebida.qtd + 1;
+			novaBebida.quantidade = novaBebida.quantidade + 1;
 
 			const index = bebidaSelecionada.indexOf(bebida);
 			let novaBebidasSelecionadas = bebidaSelecionada.filter(
@@ -40,11 +40,11 @@ const ModalBebida = (props: any) => {
 	const handleAddPedido = () => {
 		let mensagem = "Foi adicionado ";
 		bebidaSelecionada.forEach((bebida: IBebidas) => {
-			if (bebida.qtd > 0) {
+			if (bebida.quantidade > 0) {
 				props.addPedido(null, null, null, bebida);
 
-				mensagem += `${bebida.qtd} ${bebida.categoria}${
-					bebida.qtd > 1 ? "s" : ""
+				mensagem += `${bebida.quantidade} ${bebida.categoria}${
+					bebida.quantidade > 1 ? "s" : ""
 				}  de ${bebida.nome}, `;
 			}
 		});
@@ -118,7 +118,7 @@ const ModalBebida = (props: any) => {
 															-
 														</button>
 														<label>
-															{bebida.qtd}
+															{bebida.quantidade}
 														</label>
 														<button
 															onClick={() =>

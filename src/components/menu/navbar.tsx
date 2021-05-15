@@ -4,7 +4,6 @@ import logo from "../../images/PizzaPlaceLogo.png";
 
 const Menu = (props: any) => {
 	const { usuario } = props.store;
-	console.log("HERE==", props.store.pedido.criar_pizza);
 	return (
 		<nav className="navbar navbar-expand-lg navbar-expand-sm bg-menu">
 			<button
@@ -29,11 +28,20 @@ const Menu = (props: any) => {
 							Home
 						</Link>
 					</li>
-					<li className="nav-item">
-						<a className="nav-link" href="#quem-somos">
-							Quem Somos
-						</a>
-					</li>
+					{props.habilitarPedido && (
+						<li className="nav-item">
+							<Link className="nav-link" to="/dashboard">
+								Dashboard
+							</Link>
+						</li>
+					)}
+					{!props.habilitarPedido && (
+						<li className="nav-item">
+							<a className="nav-link" href="#quem-somos">
+								Quem Somos
+							</a>
+						</li>
+					)}
 					<li className="nav-item">
 						<a className="nav-link" href="#cardapio">
 							Cardápio

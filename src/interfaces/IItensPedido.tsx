@@ -13,6 +13,7 @@ interface IItensPedido {
 	updated_at: Date;
 	pizza: IPizzas;
 	bebida: IBebidas;
+	quantidade: number;
 	// favorito: IFavorito;
 }
 

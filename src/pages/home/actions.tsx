@@ -8,12 +8,12 @@ const API_URL = process.env.PROD ? "" : "http://localhost:5000";
 const getPizzas = () => {
 	return (dispatch: any) => {
 		axios
-			.get(`${API_URL}/pizzas`)
+			.get(`${API_URL}/pizzas/menu`)
 			.then((response) => {
 				for (let index = 0; index < response.data.length; index++) {
 					const element = response.data[index];
 					element.imagem = `pizza-${index + 1}`;
-					element.qtd = 1;
+					element.quantidade = 1;
 					element.valorTotal = element.valor;
 				}
 
@@ -42,7 +42,7 @@ const getBebidasGrupo = () => {
 					const element = response.data[index];
 					element.forEach((item: IBebidas) => {
 						item.imagem = `bebida-${index + 1}`;
-						item.qtd = 0;
+						item.quantidade = 0;
 						item.valorTotal = 0;
 					});
 				}

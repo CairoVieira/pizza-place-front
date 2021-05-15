@@ -3,7 +3,7 @@ interface IBebidas {
 	nome: string;
 	valor: number;
 	valorTotal: number;
-	qtd: number;
+	quantidade: number;
 	categoria: string;
 	created_at: Date;
 	updated_at: Date;

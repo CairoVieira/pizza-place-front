@@ -1,19 +1,9 @@
-import criarPizza from "../../images/criar-pizza.jpg";
 import "../../css/criar-pizza.css";
-import { useState } from "react";
+import criarPizza from "../../images/criar-pizza.jpg";
 import { IIngredientes } from "../../interfaces/IIngredientes";
-
-interface IState {
-	qtdPizza: number;
-}
-
-const INITIAL_STATE: IState = {
-	qtdPizza: 1,
-};
 
 const ModalCriarPizza = (props: any) => {
 	const { pedido, pizzaria } = props.store;
-	const [qtdPizza, setQtdPizza] = useState(INITIAL_STATE.qtdPizza);
 
 	let arrayMassa: Array<IIngredientes> = [];
 	let arrayMolho: Array<IIngredientes> = [];
@@ -36,46 +26,89 @@ const ModalCriarPizza = (props: any) => {
 		}
 	};
 
-	const handleQtdMenos = () => {
-		if (qtdPizza > 0) setQtdPizza(qtdPizza - 1);
-	};
-
-	const handleQtdMais = () => {
-		if (qtdPizza < 10) setQtdPizza(qtdPizza + 1);
-	};
-
 	const handleChange = (e: any) => {
+		let itens = pedido.criar_pizza.itens_pizza;
 		if (e.target.name === "nomePizza")
 			props.setCriarPizzaNome(e.target.value);
 		if (e.target.name === "massa") {
-			let itens = pedido.criar_pizza.itens_pizza;
 			arrayMassa.forEach((massa) => {
-				itens.splice(itens.indexOf(massa.id), 1);
+				const item = itens.find((m: string) => m === massa.id);
+				if (item) props.setCriarPizzaValor(-massa.valor);
+
+				itens = itens.splice(itens.indexOf(massa.id), 1);
 				props.setCriarPizzaItens(itens);
 			});
-			props.setCriarPizzaItensAdd(e.target.value);
+			const massa = arrayMassa.find(
+				(m: IIngredientes) => m.id === e.target.value
+			);
+
+			if (massa) {
+				props.setCriarPizzaItensAdd(massa.id);
+				props.setCriarPizzaValor(massa.valor);
+			}
 		}
 		if (e.target.name === "molho") {
-			let itens = pedido.criar_pizza.itens_pizza;
 			arrayMolho.forEach((molho) => {
-				itens.splice(itens.indexOf(molho.id), 1);
+				const item = itens.find((m: string) => m === molho.id);
+				if (item) props.setCriarPizzaValor(-molho.valor);
+
+				itens = itens.splice(itens.indexOf(molho.id), 1);
 				props.setCriarPizzaItens(itens);
 			});
-			props.setCriarPizzaItensAdd(e.target.value);
+			const molho = arrayMolho.find(
+				(m: IIngredientes) => m.id === e.target.value
+			);
+
+			if (molho) {
+				props.setCriarPizzaItensAdd(molho.id);
+				props.setCriarPizzaValor(molho.valor);
+			}
 		}
 		if (e.target.name === "toppings") {
-			let itens = pedido.criar_pizza.itens_pizza;
-			let item = itens.find((i: string) => i === e.target.value);
-			if (!item) props.setCriarPizzaItensAdd(e.target.value);
-			else {
-				itens.splice(itens.indexOf(item), 1);
-				props.setCriarPizzaItens(itens);
+			const top = arrayToppings.find(
+				(t: IIngredientes) => t.id === e.target.value
+			);
+			if (top) {
+				if (e.target.checked) {
+					props.setCriarPizzaItensAdd(top.id);
+					props.setCriarPizzaValor(top.valor);
+				} else {
+					const novosItens = itens.filter(
+						(item: string) => item !== e.target.value
+					);
+					props.setCriarPizzaItens(novosItens);
+					props.setCriarPizzaValor(-top.valor);
+				}
+			}
+		}
+		if (e.target.name === "qtdMenos") {
+			if (pedido.criar_pizza.quantidade > 1) {
+				props.setCriarPizzaValor(
+					-(
+						pedido.criar_pizza.valorTotal /
+						pedido.criar_pizza.quantidade
+					)
+				);
+				props.setCriarPizzaQtd(pedido.criar_pizza.quantidade - 1);
+			}
+		}
+		if (e.target.name === "qtdMais") {
+			if (pedido.criar_pizza.quantidade < 10) {
+				props.setCriarPizzaValor(
+					pedido.criar_pizza.valorTotal /
+						pedido.criar_pizza.quantidade
+				);
+				props.setCriarPizzaQtd(pedido.criar_pizza.quantidade + 1);
 			}
 		}
 	};
 
 	const handleSubmit = (e: any) => {
 		e.preventDefault();
+		const pizzaCriada = pedido.criar_pizza;
+		pizzaCriada.is_menu = false;
+		pizzaCriada.valor = pizzaCriada.valorTotal;
+		props.addPizza(pizzaCriada);
 	};
 
 	init();
@@ -237,19 +270,53 @@ const ModalCriarPizza = (props: any) => {
 												</div>
 											</div>
 										</div>
+										<div className="row mt-3">
+											<div className="col-sm-12 col-md-8 col-lg-8">
+												<label className="pizza-serve">
+													<i className="fas fa-user mr-1"></i>
+													<strong>
+														serve 1 pessoa
+													</strong>
+												</label>
+											</div>
+											<div className="col-sm-12 col-md-4 col-lg-4 text-left">
+												<label className="pizza-valor">
+													R${" "}
+													{pedido.criar_pizza
+														.valorTotal &&
+														pedido.criar_pizza.valorTotal.toFixed(
+															2
+														)}
+												</label>
+											</div>
+										</div>
 										<div className="row mt-3 pt-1 pb-1 criar-pizza-botoes">
 											<div className="btn-criar-pizza btn-qtd">
 												<button
-													onClick={handleQtdMenos}
+													name="qtdMenos"
+													type="button"
+													onClick={handleChange}
 												>
 													-
 												</button>
-												<label>{qtdPizza}</label>
-												<button onClick={handleQtdMais}>
+												<label>
+													{
+														pedido.criar_pizza
+															.quantidade
+													}
+												</label>
+												<button
+													type="button"
+													name="qtdMais"
+													onClick={handleChange}
+												>
 													+
 												</button>
 											</div>
-											<button className="btn-criar-pizza btn-add-pizza">
+											<button
+												type="submit"
+												className="btn-criar-pizza btn-add-pizza"
+											>
 												Adicionar
 											</button>
 										</div>

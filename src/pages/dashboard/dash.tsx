@@ -25,14 +25,16 @@ const Dash = (props: any) => {
 										pedido.ultimo_pedido.itens_pedido.map(
 											(item: IItensPedido) => (
 												<div key={item.id}>
-													{item.bebida && (
-														<label>
-															{item.bebida.nome}
-														</label>
-													)}
 													{item.pizza && (
 														<label>
+															{item.quantidade}x{" "}
 															{item.pizza.nome}
+														</label>
+													)}
+													{item.bebida && (
+														<label>
+															{item.quantidade}x{" "}
+															{item.bebida.nome}
 														</label>
 													)}
 												</div>

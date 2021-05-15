@@ -9,6 +9,8 @@ import {
 	SET_CRIAR_PIZZA_ITENS,
 	SET_CRIAR_PIZZA_ITENS_ADD,
 	SET_CRIAR_PIZZA_NOME,
+	SET_CRIAR_PIZZA_QUANTIDADE,
+	SET_CRIAR_PIZZA_VALOR,
 	SET_LISTA_ENDERECOS,
 	SET_PEDIDO_BEBIDA,
 	SET_PEDIDO_ENDERECO,
@@ -97,12 +99,42 @@ const setPizzaSelecionada = (pizza: IPizzas) => {
 	};
 };
 
+const addPizza = (pizza: IPizzas) => {
+	return (dispatch: any) => {
+		axios
+			.post(`${API_URL}/pizzas`, pizza)
+			.then((response: any) => {
+				console.log("response==", response);
+				const novaPizza = response.data;
+
+				novaPizza.valorTotal = pizza.valorTotal;
+				novaPizza.quantidade = pizza.quantidade;
+				dispatch(
+					addPedido(
+						undefined,
+						undefined,
+						novaPizza,
+						undefined,
+						undefined
+					)
+				);
+			})
+			.catch((err) => {
+				Swal.fire(
+					"Erro ao criar pizza",
+					`Ocorreu um erro ao salvar a pizza ${pizza.nome}. ${err.response.data.error}`,
+					"error"
+				);
+			});
+	};
+};
+
 const addPedido = (
-	usuario: IUsuario,
-	endereco: IEndereco,
-	pizza: IPizzas,
-	bebida: IBebidas,
-	pagamento: string
+	usuario?: IUsuario,
+	endereco?: IEndereco,
+	pizza?: IPizzas,
+	bebida?: IBebidas,
+	pagamento?: string
 ) => {
 	return (dispatch: any) => {
 		if (usuario) {
@@ -115,6 +147,7 @@ const addPedido = (
 		if (pizza) {
 			const pedido_pizza = {
 				pizza_id: pizza.id,
+				quantidade: pizza.quantidade,
 				valor_item_pedido: pizza.valorTotal,
 			};
 			dispatch({ type: SET_PEDIDO_PIZZA, payload: pedido_pizza });
@@ -124,8 +157,8 @@ const addPedido = (
 			});
 			Swal.fire(
 				"Pizza adicionada",
-				`Foi adicionado ${pizza.qtd} ${
-					pizza.qtd > 1 ? "pizzas" : "pizza"
+				`Foi adicionado ${pizza.quantidade} ${
+					pizza.quantidade > 1 ? "pizzas" : "pizza"
 				} ${pizza.nome} ao seu pedido!`,
 				"success"
 			);
@@ -134,7 +167,8 @@ const addPedido = (
 		if (bebida) {
 			const pedido_bebida = {
 				bebida_id: bebida.id,
-				valor_item_pedido: bebida.qtd * bebida.valor,
+				quantidade: bebida.quantidade,
+				valor_item_pedido: bebida.quantidade * bebida.valor,
 			};
 			dispatch({ type: SET_PEDIDO_BEBIDA, payload: pedido_bebida });
 			dispatch({
@@ -188,6 +222,18 @@ const setCriarPizzaItensAdd = (item: string[]) => {
 	};
 };
 
+const setCriarPizzaQtd = (quantidade: number) => {
+	return (dispatch: any) => {
+		dispatch({ type: SET_CRIAR_PIZZA_QUANTIDADE, payload: quantidade });
+	};
+};
+
+const setCriarPizzaValor = (valor: number) => {
+	return (dispatch: any) => {
+		dispatch({ type: SET_CRIAR_PIZZA_VALOR, payload: valor });
+	};
+};
+
 export {
 	getIngredientes,
 	getBebidasGrupo,
@@ -196,9 +242,12 @@ export {
 	handleFiltrarPedido,
 	setBebidaSelecionada,
 	setPizzaSelecionada,
+	addPizza,
 	addPedido,
 	getEnderecosUsuario,
 	setCriarPizzaNome,
 	setCriarPizzaItens,
 	setCriarPizzaItensAdd,
+	setCriarPizzaQtd,
+	setCriarPizzaValor,
 };

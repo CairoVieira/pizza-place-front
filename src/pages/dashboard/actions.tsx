@@ -18,7 +18,6 @@ const getUsuario = () => {
 
 const getUltimoPedido = (usuario: IUsuario) => {
 	return (dispatch: any) => {
-		console.log("here", usuario.id);
 		return axios
 			.get(`${API_URL}/pedidos/ultimo/${usuario.id}`)
 			.then((response) => {

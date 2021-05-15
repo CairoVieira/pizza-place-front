@@ -26,19 +26,19 @@ const ModalPizzas = (props: any) => {
 	};
 
 	const handleQtdMenos = () => {
-		if (pizzaSelecionada.qtd > 1) {
+		if (pizzaSelecionada.quantidade > 1) {
 			const novaPizza = pizzaSelecionada;
 			novaPizza.valorTotal = novaPizza.valorTotal - novaPizza.valor;
-			novaPizza.qtd = novaPizza.qtd - 1;
+			novaPizza.quantidade = novaPizza.quantidade - 1;
 			props.setPizzaSelecionada(novaPizza);
 		}
 	};
 
 	const handleQtdMais = () => {
-		if (pizzaSelecionada.qtd < 10) {
+		if (pizzaSelecionada.quantidade < 10) {
 			const novaPizza = pizzaSelecionada;
 			novaPizza.valorTotal = novaPizza.valorTotal + novaPizza.valor;
-			novaPizza.qtd = novaPizza.qtd + 1;
+			novaPizza.quantidade = novaPizza.quantidade + 1;
 			props.setPizzaSelecionada(novaPizza);
 		}
 	};
@@ -134,7 +134,7 @@ const ModalPizzas = (props: any) => {
 												-
 											</button>
 											<label>
-												{pizzaSelecionada.qtd}
+												{pizzaSelecionada.quantidade}
 											</label>
 											<button onClick={handleQtdMais}>
 												+

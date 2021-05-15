@@ -19,8 +19,9 @@ interface IPizzas {
 	valor: number;
 	valorTotal: number;
 	itens_pizza: Array<IItensPizza>;
+	is_menu: boolean;
 	imagem: string;
-	qtd: number;
+	quantidade: number;
 	created_at: Date;
 	updated_at: Date;
 }

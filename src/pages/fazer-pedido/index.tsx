@@ -62,7 +62,7 @@ class FazerPedido extends Component<IProps, IState> {
 	render() {
 		return (
 			<>
-				<Menu {...this.props} />
+				<Menu {...this.props} habilitarPedido={true} />
 				<Pizza />
 				<FazerBusca {...this.props} />
 				<Cardapio {...this.props} habilitarPedido={true} />
