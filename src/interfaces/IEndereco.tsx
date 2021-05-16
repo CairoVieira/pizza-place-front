@@ -11,6 +11,7 @@ interface IEndereco {
 	numero: string;
 	pais: string;
 	updated_at: Date;
+	is_principal: boolean;
 }
 
 export type { IEndereco };

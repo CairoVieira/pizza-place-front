@@ -139,4 +139,19 @@
 .dash-ultimas-criacoes {
 	width: 7rem;
 	height: 7rem;
+	background: var(--white);
+	border: 2px solid var(--black);
+}
+
+.enderecos-campo input,
+.enderecos-campo select {
+	width: 100%;
+	padding: 0.1rem 0.5rem;
+	height: 100%;
+}
+
+.endereco-titulo {
+	border-bottom: 2px solid var(--black);
+	width: fit-content;
+	margin-bottom: 1.5rem;
 }

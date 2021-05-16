@@ -30,7 +30,7 @@ const SideBar = (props: any) => {
 					<Link to="#contact">Favoritos</Link>
 				</li>
 				<li>
-					<Link to="#contact">Endereços</Link>
+					<Link to="/dashboard/enderecos">Endereços</Link>
 				</li>
 				<li>
 					<Link to="#contact">Trocar Senha</Link>
@@ -68,7 +68,7 @@ const SideBar = (props: any) => {
 					</Link>
 				</li>
 				<li>
-					<Link to="#contact">
+					<Link to="/dashboard/enderecos">
 						<i className="fas fa-user"></i>
 					</Link>
 				</li>

@@ -4,6 +4,7 @@ import Home from "../pages/home";
 import Login from "../pages/login";
 import Checkout from "../pages/checkout";
 import Dashboard from "../pages/dashboard";
+import Endereco from "../pages/enderecos";
 import history from "../components/history";
 import { Provider } from "react-redux";
 
@@ -18,6 +19,11 @@ const Routes = () => {
 					<Route path="/login" component={Login} />
 					<Route path="/fazer-pedido" component={FazerPedido} />
 					<Route path="/check-out" component={Checkout} />
+					<Route
+						exact
+						path="/dashboard/enderecos"
+						component={Endereco}
+					/>
 					<Route path="/dashboard" component={Dashboard} />
 					<Redirect path="*" to="/" />
 				</Switch>

@@ -109,6 +109,7 @@ const FormularioCheckout = (props: any) => {
 													estado: "",
 													logradouro: "",
 													numero: "",
+													is_principal: false,
 													pais: "",
 													updated_at: new Date(),
 												};

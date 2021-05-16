@@ -1,4 +1,5 @@
 import { IItensPedido } from "../../interfaces/IItensPedido";
+import { IPizzas } from "../../interfaces/IPizzas";
 
 const Dash = (props: any) => {
 	const { usuario, pedido } = props.store;
@@ -43,6 +44,7 @@ const Dash = (props: any) => {
 								</div>
 							</div>
 						</div>
+						{console.log("USUARIO==", usuario)}
 						<div className="row">
 							<div className="col-sm-12 col-md-12 col-lg-12">
 								<h1 className="dash-titulos">última entrega</h1>
@@ -92,21 +94,23 @@ const Dash = (props: any) => {
 									últimas criações
 								</h1>
 								<div className="row">
-									<div className="col-sm-4 col-md-4 col-lg-4">
-										<button className="dash-ultimas-criacoes">
-											Mista
-										</button>
-									</div>
-									<div className="col-sm-4 col-md-4 col-lg-4">
-										<button className="dash-ultimas-criacoes">
-											Só minha
-										</button>
-									</div>
-									<div className="col-sm-4 col-md-4 col-lg-4">
-										<button className="dash-ultimas-criacoes">
-											Mozão
-										</button>
-									</div>
+									{usuario.listaCriacoes.length > 0 &&
+										usuario.listaCriacoes.map(
+											(pizza: IPizzas, index: number) => {
+												if (index < 3)
+													return (
+														<div
+															key={index}
+															className="col-sm-4 col-md-4 col-lg-4"
+														>
+															<button className="dash-ultimas-criacoes">
+																{pizza.nome}
+															</button>
+														</div>
+													);
+												return "";
+											}
+										)}
 								</div>
 							</div>
 						</div>
